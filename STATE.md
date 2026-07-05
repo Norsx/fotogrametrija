@@ -2,21 +2,28 @@
 
 ## Projekt
 
-- **Naziv**: Fotogrametrija — Stereokorelacija (T3DIC)
-- **Tip**: Zadaća / Seminar
-- **Kolegij**: _TBD_
+- **Naziv**: Stereo korelacija digitalne slike — mjerenje ravninskih i izvanravninskih pomaka na površini (projekt br. 3)
+- **Tip**: Seminar (programski zadatak)
+- **Kolegij**: Fotogrametrija i vizualizacija objekata
+- **Voditelj**: izv. prof. dr. sc. Zvonimir Tomičević
+- **Student**: Ivan Noršić
 - **LaTeX format**: FSB Seminar
+- **Tekst zadatka**: [`data/raw/ZADATAK.md`](data/raw/ZADATAK.md)
 
 ## Trenutni fokus
 
-- Uvezen postojeći MATLAB kod i podaci iz `4Send` za stereokorelaciju
-  (Global T3 Digital Image Correlation — T3DIC). Sljedeći korak: pisanje LaTeX
-  dokumentacije/seminara (`počni pisati`).
+- Nadogradnja postojećeg 2D `GlobalT3DIC` u **globalni FE stereo-DIC (3D)**.
+  Potvrđene odluke: metoda = globalni FE (reuse T3DIC); kalibracija = koristi dane
+  `Pi1`/`Pi2` (ne kalibriramo iznova); isporuka = MATLAB kod **+** LaTeX seminar.
+- **Otvoreno pitanje (blocker za stvarne rezultate)**: slike iz obje kamere
+  (referentne + deformirane) — provjeriti postoje li na disku; ako ne, ide
+  sintetička validacija (generiranje slika projekcijom preko `Pi1`/`Pi2`).
 
 ## Bilješke
 
 - Kod je MATLAB (`.m`) + generirani C++/MEX artefakti (`codegen/`, `*.mexw64`).
-- Ulazni `.mat` podaci su read-only (u `data/raw/`).
+- Ulazni `.mat` podaci su read-only (u `data/raw/`). `Calib_plus_3D_mesh.mat`
+  sadrži `Pi1`,`Pi2` (projekcijske matrice kamera) + 3D FE mrežu `MeshDef`.
 
 ---
 
@@ -30,6 +37,7 @@ Razmješteno prema pravilima iz `AGENTS.md` (rule 2) i `.ai/config/REFERENCE.md`
 | `Calib_plus_3D_mesh.mat` | `data/raw/` | Sirovi ulazni podaci — **READ-ONLY** |
 | `Mesh_1.mat`, `Mesh_2.mat` | `data/raw/` | Sirovi ulazni podaci — **READ-ONLY** |
 | `T3DIC/Functions/persson04mesh.pdf` | `data/sources/` | PDF literatura za RAG — praćeno Git LFS-om |
+| Tekst zadatka (iz PDF-a, str. 7–8) | `data/raw/ZADATAK.md` | Dani, nepromjenjivi zadatak od profesora — **READ-ONLY** |
 
 Napomena: `persson04mesh.pdf` (Persson 2004, mesh generation) je izmješten iz koda
 u `data/sources/` jer je literatura, a ne kod. Detaljniji opis strukture koda:
