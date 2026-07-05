@@ -2,9 +2,9 @@
 
 ## Projekt
 
-- **Naziv**: _TBD_
+- **Naziv**: fotogrametrija
 - **Tip**: Seminar | Zadaća | Thesis
-- **Kolegij**: _TBD_
+- **Kolegij**: fotogrametrija
 - **LaTeX format**: FSB Seminar
 
 ## Trenutni fokus
