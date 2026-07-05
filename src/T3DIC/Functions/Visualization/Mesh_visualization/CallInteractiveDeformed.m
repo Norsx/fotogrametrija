@@ -1,0 +1,19 @@
+function [fig,slider] = CallInteractiveDeformed(coor,elements,Field,image)
+
+fig = figure('Position', [50, 50, 720, 720]);
+ax = axes('Parent', fig);
+sliceViewerDeformed(ax, coor, Field, elements, image);
+
+% Store the axes handle and other necessary data in the figure's UserData
+fig.UserData = struct('ax', ax, 'sliderValue', 1, 'selectedOption', 1);
+
+% Create the slider
+slider = uicontrol('Style', 'slider', ...
+    'Min', 1, ...
+    'Max', length(Field), ...
+    'Value', 1, ...
+    'SliderStep', [1 / (length(Field) - 1), 1 / (length(Field) - 1)], ...
+    'Position', [fig.Position(3) - 200, fig.Position(4) - 30, 200, 20], ...
+    'Callback', @(src, event) updateSliceDeformed(src, coor, Field, elements,src.Value));
+
+

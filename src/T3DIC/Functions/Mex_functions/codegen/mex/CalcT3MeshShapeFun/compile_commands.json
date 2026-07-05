@@ -1,0 +1,134 @@
+[
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  CalcT3MeshShapeFun_data.cpp /Fobuild\\win64\\CalcT3MeshShapeFun_data.obj",
+    "file": "CalcT3MeshShapeFun_data.cpp",
+    "output": "build/win64/CalcT3MeshShapeFun_data.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  rt_nonfinite.cpp /Fobuild\\win64\\rt_nonfinite.obj",
+    "file": "rt_nonfinite.cpp",
+    "output": "build/win64/rt_nonfinite.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  CalcT3MeshShapeFun_initialize.cpp /Fobuild\\win64\\CalcT3MeshShapeFun_initialize.obj",
+    "file": "CalcT3MeshShapeFun_initialize.cpp",
+    "output": "build/win64/CalcT3MeshShapeFun_initialize.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  CalcT3MeshShapeFun_terminate.cpp /Fobuild\\win64\\CalcT3MeshShapeFun_terminate.obj",
+    "file": "CalcT3MeshShapeFun_terminate.cpp",
+    "output": "build/win64/CalcT3MeshShapeFun_terminate.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  CalcT3MeshShapeFun.cpp /Fobuild\\win64\\CalcT3MeshShapeFun.obj",
+    "file": "CalcT3MeshShapeFun.cpp",
+    "output": "build/win64/CalcT3MeshShapeFun.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  sparse.cpp /Fobuild\\win64\\sparse.obj",
+    "file": "sparse.cpp",
+    "output": "build/win64/sparse.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  indexShapeCheck.cpp /Fobuild\\win64\\indexShapeCheck.obj",
+    "file": "indexShapeCheck.cpp",
+    "output": "build/win64/indexShapeCheck.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  T3ElementShapeFun_V2.cpp /Fobuild\\win64\\T3ElementShapeFun_V2.obj",
+    "file": "T3ElementShapeFun_V2.cpp",
+    "output": "build/win64/T3ElementShapeFun_V2.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  warning.cpp /Fobuild\\win64\\warning.obj",
+    "file": "warning.cpp",
+    "output": "build/win64/warning.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  bigProduct.cpp /Fobuild\\win64\\bigProduct.obj",
+    "file": "bigProduct.cpp",
+    "output": "build/win64/bigProduct.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  validateNumericIndex.cpp /Fobuild\\win64\\validateNumericIndex.obj",
+    "file": "validateNumericIndex.cpp",
+    "output": "build/win64/validateNumericIndex.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  locBsearch.cpp /Fobuild\\win64\\locBsearch.obj",
+    "file": "locBsearch.cpp",
+    "output": "build/win64/locBsearch.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  interface\\_coder_CalcT3MeshShapeFun_api.cpp /Fobuild\\win64\\_coder_CalcT3MeshShapeFun_api.obj",
+    "file": "interface/_coder_CalcT3MeshShapeFun_api.cpp",
+    "output": "build/win64/_coder_CalcT3MeshShapeFun_api.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  interface\\_coder_CalcT3MeshShapeFun_mex.cpp /Fobuild\\win64\\_coder_CalcT3MeshShapeFun_mex.obj",
+    "file": "interface/_coder_CalcT3MeshShapeFun_mex.cpp",
+    "output": "build/win64/_coder_CalcT3MeshShapeFun_mex.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  eml_int_forloop_overflow_check.cpp /Fobuild\\win64\\eml_int_forloop_overflow_check.obj",
+    "file": "eml_int_forloop_overflow_check.cpp",
+    "output": "build/win64/eml_int_forloop_overflow_check.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  sortSparseParenAssignInputs.cpp /Fobuild\\win64\\sortSparseParenAssignInputs.obj",
+    "file": "sortSparseParenAssignInputs.cpp",
+    "output": "build/win64/sortSparseParenAssignInputs.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  sort.cpp /Fobuild\\win64\\sort.obj",
+    "file": "sort.cpp",
+    "output": "build/win64/sort.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  sortIdx.cpp /Fobuild\\win64\\sortIdx.obj",
+    "file": "sortIdx.cpp",
+    "output": "build/win64/sortIdx.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  sparse1.cpp /Fobuild\\win64\\sparse1.obj",
+    "file": "sparse1.cpp",
+    "output": "build/win64/sparse1.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  CalcT3MeshShapeFun_mexutil.cpp /Fobuild\\win64\\CalcT3MeshShapeFun_mexutil.obj",
+    "file": "CalcT3MeshShapeFun_mexutil.cpp",
+    "output": "build/win64/CalcT3MeshShapeFun_mexutil.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  interface\\_coder_CalcT3MeshShapeFun_info.cpp /Fobuild\\win64\\_coder_CalcT3MeshShapeFun_info.obj",
+    "file": "interface/_coder_CalcT3MeshShapeFun_info.cpp",
+    "output": "build/win64/_coder_CalcT3MeshShapeFun_info.obj"
+  },
+  {
+    "directory": "C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\\codegen\\mex\\CalcT3MeshShapeFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"C:\\Users\\Admin\\OneDrive - Fakultet strojarstva i brodogradnje\\Work\\Matlab\\T3DIC\\Functions\\Mex_functions\" /I \".\\interface\" /I \"C:\\Program Files\\MATLAB\\R2024a\\extern\\include\" /I \".\" -DMODEL=CalcT3MeshShapeFun_mex -DMW_NEEDS_VERSION_H /wd4251  \"C:\\Program Files\\MATLAB\\R2024a\\extern\\version\\cpp_mexapi_version.cpp\" /Fobuild\\win64\\cpp_mexapi_version.obj",
+    "file": "C:/Program Files/MATLAB/R2024a/extern/version/cpp_mexapi_version.cpp",
+    "output": "build/win64/cpp_mexapi_version.obj"
+  }
+]
