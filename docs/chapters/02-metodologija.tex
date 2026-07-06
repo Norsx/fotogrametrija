@@ -3,14 +3,24 @@
 
 \subsection{Eksperimentalni postav}
 
-Mjerenje je provedeno na stereovizijskom sustavu sastavljenom od dviju kamera
-usmjerenih prema površini ispitnog uzorka pod kutom (Slika \ref{fig:overlay}).
-Uzorak je vlačna epruveta s reduciranim mjernim presjekom, čija je mjerna površina
-zakrivljena (vidljivo iz rekonstruiranog oblika na Slici \ref{fig:dispmag}); mjerna
-zona prethodno je pripremljena nanošenjem nasumične crno-bijele teksture nužne za
-korelaciju. Tijekom pokusa obje su kamere snimile po 1188 vremenski usklađenih slika,
-od kojih prva odgovara nedeformiranom (referentnom) stanju, a ostale rastućim razinama
+Eksperimentalni postav prikazan je na Slici \ref{fig:postav}. Vlačni pokus proveden
+je na statičkoj kidalici Messphysik BETA 50-5, u čije je čeljusti prihvaćena vlačna
+epruveta s reduciranim mjernim presjekom; mjerna površina epruvete je zakrivljena
+(vidljivo i iz rekonstruiranog oblika na Slici \ref{fig:dispmag}). Ispred kidalice
+postavljen je stereovizijski mjerni sustav: dvije kamere na neovisnim stativima,
+usmjerene prema mjernoj zoni pod međusobnim kutom. Mjerna zona prethodno je
+pripremljena nanošenjem nasumične crno-bijele teksture nužne za korelaciju. Tijekom
+pokusa obje su kamere snimile po 1188 vremenski usklađenih slika, od kojih prva
+odgovara nedeformiranom (referentnom) stanju, a ostale rastućim razinama
 deformacije. U ovom je radu analizirano prvih 300 deformacijskih stanja.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.62\textwidth]{postav_eksperiment.png}
+  \caption{Eksperimentalni postav: vlačna epruveta u čeljustima kidalice Messphysik
+  BETA 50-5, s kamerom stereovizijskog sustava na stativu u prednjem planu.}
+  \label{fig:postav}
+\end{figure}
 
 Slika \ref{fig:speckle} prikazuje mjernu zonu snimljenu objema kamerama u
 referentnom i u posljednjem analiziranom stanju, s ucrtanom projiciranom mjernom
@@ -35,10 +45,23 @@ stereo triangulacija potom prevodi u trodimenzijske pomake.
 
 \subsection{Kalibracija i geometrijski model}
 
-Stereovizijski sustav kalibriran je unaprijed, čime su određene projekcijske matrice
-obiju kamera $\mathsf{P}_1$ i $\mathsf{P}_2$ te trodimenzijska mreža konačnih
-elemenata $\mathsf{M}$ koja opisuje referentni oblik mjerne površine (252 čvora, 438
-trokutastih elemenata). Ispravnost kalibracije provjerena je projiciranjem čvorova 3D
+Stereovizijski sustav kalibriran je unaprijed. Postav tijekom kalibracije prikazan
+je na Slici \ref{fig:kalibpostav}: umjesto epruvete, u mjerni volumen između
+čeljusti kidalice postavljena je ravninska kalibracijska meta sa šahovničkim
+uzorkom, koju obje učvršćene kamere istodobno snimaju. Iz snimaka mete određene su
+projekcijske matrice obiju kamera $\mathsf{P}_1$ i $\mathsf{P}_2$ te trodimenzijska
+mreža konačnih elemenata $\mathsf{M}$ koja opisuje referentni oblik mjerne površine
+(252 čvora, 438 trokutastih elemenata). Nakon kalibracije položaji kamera i optike
+ostaju nepromijenjeni do kraja pokusa, jer bi svaka promjena geometrije poništila
+valjanost matrica $\mathsf{P}_1$ i $\mathsf{P}_2$.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.62\textwidth]{postav_kalibracija.png}
+  \caption{Postav tijekom kalibracije: ravninska šahovnička meta u mjernom volumenu
+  kidalice i dvije kamere stereovizijskog sustava na stativima.}
+  \label{fig:kalibpostav}
+\end{figure} Ispravnost kalibracije provjerena je projiciranjem čvorova 3D
 mreže u obje kamere prema \eqref{eq:projection}; kao što pokazuje Slika
 \ref{fig:overlay}, projicirana mreža precizno prekriva teksturiranu mjernu zonu u obje
 slike, čime je potvrđena geometrijska konzistentnost sustava.
