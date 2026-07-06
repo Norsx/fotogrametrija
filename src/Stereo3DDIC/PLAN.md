@@ -11,35 +11,29 @@ Legenda: ✅ gotovo · 🔄 u tijeku · ⬜ predstoji
 - Projekcija `MeshDef` preko `Pi1/Pi2` na `frame_000001` obiju kamera → mreža pada
   točno na speckle uzorak (potvrđeno vizualno). Konvencija piksela ispravna.
 
-## Faza 1 — 2D DIC po svakoj kameri (REUSE) ⬜
-- Koristi **postojeći** `T3DIC/GlobalT3DIC.m` na cam1 i cam2 sekvenci.
-- Rezultati već postoje: `data/raw/cam{1,2}/DICresults/DICresults_msh_*.mat` (polje `U`).
-- Zadatak faze: učitati te rezultate + `Mesh_1`/`Mesh_2`; potvrditi da čvorovi
-  odgovaraju (node i u cam1 ↔ node i u cam2, jer su obje projekcije istog `MeshDef`).
-- **Novi kod:** nema (samo učitavanje). Po potrebi re-run 2D DIC-a na cam2 istim meshom.
+## Faza 1 — 2D DIC po svakoj kameri (REUSE) ✅
+- Potvrđeno: cam1 DIC mreža == `Mesh_1`, cam2 == `Mesh_2` (max|d| = 0.0) → čvorovi
+  se poklapaju node-to-node. `U` = 300 frameova × 252 čvora × 2; frame 1 = referentno.
+- **Novi kod:** nema (samo učitavanje postojećih `DICresults_msh_0.mat`).
 
-## Faza 2 — Stereo triangulacija (NOVO, malo) ⬜
-- Za svaki frame i svaki čvor: iz 2D položaja u cam1 (`Mesh_1 + U1`) i cam2 (`Mesh_2 + U2`)
-  rekonstruiraj 3D točku preko `Pi1/Pi2`.
-- **MATLAB built-in:** `triangulate` (Computer Vision Toolbox); fallback = ~8 linija DLT (`A\b`).
-- Rezultat: 3D položaji čvorova u referentnom i svim deformiranim stanjima.
-- **Novi kod:** `Functions/stereoTriangulate.m` (kratko).
+## Faza 2 — Stereo triangulacija (NOVO, malo) ✅
+- `Functions/stereoTriangulate.m` — DLT preko `svd` (~12 linija).
+- Validacija: referenca vraća `MeshDef` na 2.3e-15; uparivanje `xy+U` potvrđeno
+  reprojekcijom (0.197 px vs 4.15 px za swapped).
 
-## Faza 3 — Polja 3D pomaka (NOVO, trivijalno) ⬜
-- `U3D{t} = X3D_deformirano{t} − X3D_referentno`. Spremiti po frameu.
+## Faza 3 — Polja 3D pomaka (NOVO, trivijalno) ✅
+- `U3D{t} = triangulate(xy+U1, xy+U2) − Xref`. Dominira Y (os opterećenja),
+  Z izvanravninski do ~0.08. Evolucija monotona s lokalizacijom ~frame 240.
 
-## Faza 4 — Deformacije (REUSE) ⬜
-- Reuse `T3DIC/MeshCalculateStrains.m`; sitna prilagodba za 3D površinu
-  (deformacije u tangentnoj ravnini elementa) ili primjena na projicirane koordinate.
-- Glavne i ekvivalentne deformacije.
+## Faza 4 — Deformacije (NOVO, kratko) ✅
+- `Functions/surfaceStrains.m` — in-plane Green-Lagrange u tangentnoj ravnini
+  elementa (F = Ddef/Dref, E = ½(FᵀF−I)); glavne + von-Mises. E₁ ~0–12%.
 
-## Faza 5 — Vizualizacija (built-in) ⬜
-- **MATLAB built-in:** `trisurf`/`patch` za 3D mrežu obojenu poljem
-  pomaka/deformacija + prikaz deformiranog stanja. Reuse stila iz `PlotMesh`.
+## Faza 5 — Vizualizacija (built-in) ✅
+- `trisurf`/`patch`: deformirani 3D oblik (pomak), polje E₁, evolucija pomaka.
 
-## Faza 6 — Glavna skripta + spremanje ⬜
-- Tanki wrapper `StereoDIC3D.m` koji veže faze 1–5.
-- Spremanje u `data/processed/stereo_<ddmmyyyy_HHMMSS>/` (pravilo projekta).
+## Faza 6 — Glavna skripta + spremanje ✅
+- `StereoDIC3D.m` (wrapper). Izlaz u `data/processed/stereo_<ddmmyyyy_HHMMSS>/`.
 
 ## Faza 7 — Seminar (LaTeX, FSB) ⬜
 - `latex_architect` postavi `docs/`; poglavlja: uvod, teorija stereo-DIC,

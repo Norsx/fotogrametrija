@@ -12,11 +12,11 @@
 
 ## Trenutni fokus
 
-- Nadogradnja postojećeg 2D `GlobalT3DIC` u **globalni FE stereo-DIC (3D)**.
-  Potvrđene odluke: metoda = globalni FE (reuse T3DIC); kalibracija = koristi dane
-  `Pi1`/`Pi2` (ne kalibriramo iznova); isporuka = MATLAB kod **+** LaTeX seminar.
-- **Slike su stigle** ✅ — sekvence obiju kamera (2×1188 PNG) u `data/raw/cam1|cam2/`.
-  Blocker riješen; možemo raditi stvarno mjerenje (bez simulacije).
+- **Stereo-DIC (3D) kod GOTOV i validiran** ✅ — `src/Stereo3DDIC/` (2D DIC po kameri
+  → stereo triangulacija `Pi1/Pi2` → 3D pomaci → deformacije). Rezultati u
+  `data/processed/stereo_*/` (polja pomaka, E₁, evolucija). Vidi `src/Stereo3DDIC/PLAN.md`.
+- **Preostaje: Faza 7 — pisani seminar (LaTeX, FSB)** preko `latex_architect` → `docs/`.
+- Metoda: reuse `T3DIC` + MATLAB built-ins (`svd`, `trisurf`); minimalno novog koda.
 
 ## Bilješke
 
