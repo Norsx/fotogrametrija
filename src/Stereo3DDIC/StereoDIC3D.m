@@ -4,16 +4,25 @@ function res = StereoDIC3D(varargin)
 %   res = StereoDIC3D()                 % all frames, save results + plots
 %   res = StereoDIC3D('nFrames',N)      % subsample to N frames
 %   res = StereoDIC3D('save',false,'plot',false)
+%   res = StereoDIC3D('clean',false)    % disable edge-node outlier cleaning
 %
 % Reconstructs 3D surface displacement and strain fields from the per-camera
 % 2D DIC results (already computed by T3DIC) via stereo triangulation with the
 % given projection matrices Pi1/Pi2. Only triangulation + surface strain are new;
 % the correlation itself is reused from the existing 2D pipeline.
+%
+% 'clean' (default true) applies cleanEdgeNodes to the per-camera 2D fields
+% before triangulation: nodes whose displacement deviates from the median of
+% their mesh neighbours by more than 'cleanTol' px (default 3) are replaced by
+% that median. This repairs isolated boundary nodes with degraded correlation
+% without touching the rest of the field or any algorithm step.
 
 p = inputParser;
 p.addParameter('nFrames',[]);
 p.addParameter('save',true);
 p.addParameter('plot',true);
+p.addParameter('clean',true);
+p.addParameter('cleanTol',3);
 p.parse(varargin{:});
 opt = p.Results;
 
@@ -32,6 +41,15 @@ D2 = load(fullfile(raw,'cam2','DICresults','DICresults_msh_0.mat'),'Mesh','U');
 conn = D1.Mesh.connectivity;
 xy1  = D1.Mesh.coordinates(:,1:2);        % cam1 reference pixels [x,y]
 xy2  = D2.Mesh.coordinates(:,1:2);        % cam2 reference pixels
+
+% --- optional cleaning of isolated outlier nodes (degraded edge correlation) ---
+cleanInfo = struct('cam1',[],'cam2',[]);
+if opt.clean
+    [D1.U, cleanInfo.cam1] = cleanEdgeNodes(D1.U, conn, opt.cleanTol);
+    [D2.U, cleanInfo.cam2] = cleanEdgeNodes(D2.U, conn, opt.cleanTol);
+    fprintf('cleanEdgeNodes (tol %.1f px): cam1 nodes [%s], cam2 nodes [%s]\n', ...
+        opt.cleanTol, num2str(cleanInfo.cam1.nodes), num2str(cleanInfo.cam2.nodes));
+end
 
 nAll = numel(D1.U);
 if isempty(opt.nFrames), frames = 1:nAll; else, frames = round(linspace(1,nAll,opt.nFrames)); end
@@ -56,7 +74,8 @@ end
 
 res = struct('Xref',Xref,'conn',conn,'frames',frames,'U3D',{U3D}, ...
              'Ecomp',Ecomp,'Eprin',Eprin,'Evm',Evm, ...
-             'Umax',Umax,'Uzmax',Uzmax,'E1max',E1max);
+             'Umax',Umax,'Uzmax',Uzmax,'E1max',E1max, ...
+             'clean',cleanInfo,'u1last',D1.U{frames(end)},'u2last',D2.U{frames(end)});
 
 % --- output folder (project rule: data/processed/<source_ddmmyyyy_hhmmss>) ---
 if opt.save || opt.plot
