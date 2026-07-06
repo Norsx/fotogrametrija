@@ -11,6 +11,7 @@
 | Glavni driver | `src/Stereo3DDIC/StereoDIC3D.m` | ✅ **ispravno** |
 | DLT triangulacija | `src/Stereo3DDIC/Functions/stereoTriangulate.m` | ✅ **ispravno** |
 | Površinske deformacije | `src/Stereo3DDIC/Functions/surfaceStrains.m` | ✅ **ispravno** (uz poznatu osjetljivost na degenerirane elemente) |
+| Čišćenje rubnih čvorova | `src/Stereo3DDIC/Functions/cleanEdgeNodes.m` | ✅ **ispravno** (dodano 07.07.2026., v. §3.1) |
 | 2D DIC (globalni FE-DIC) | `src/T3DIC/GlobalT3DIC.m` | ✅ **ispravno** (skripta, nekoliko kozmetičkih mana) |
 | Oblikovne funkcije T3 | `src/T3DIC/Functions/ShapeFunctions/*` | ✅ **ispravno** |
 | Mesh generacija | `src/T3DIC/Functions/Meshing/*` | ✅ ispravno (interaktivno, ne koristi se u stereo fazi) |
@@ -58,6 +59,25 @@ pogrešna.
   `.mat`-a treba znati da nije filtriran (v. RESULTS_VALIDATION.md §3.1).
 - `surfaceStrains` se u petlji poziva samo radi `E1max`; puni tenzor se čuva samo
   za zadnje stanje — svjesna ušteda memorije.
+
+### 1.1 `cleanEdgeNodes.m` — čišćenje rubnih outliera ✅ ispravno (dodano 07.07.2026.)
+
+**Što radi:** za svaki frame i svaku kameru računa odstupanje pomaka svakog čvora
+od medijana pomaka njegovih mrežnih susjeda; čvorove s odstupanjem > `tol`
+(default 3 px) zamjenjuje tim medijanom. Vraća info strukturu (detektirani
+čvorovi, broj po frameu, najveće odstupanje).
+
+**Provjere korektnosti:**
+- Susjedstvo iz konektivnosti (unija po trokutima) — točno. ✅
+- Medijan susjeda robustan je i kad su dva susjedna čvora oba pokvarena
+  (110 i 229 su susjedi; medijan ~6 ostalih susjeda ne kontaminira se). ✅
+- Zamjena se radi samo u frameovima gdje je prag probijen — rani, ispravni
+  frameovi tih čvorova ostaju izmjereni, ne interpolirani. ✅
+- Na analiziranim podacima detektira točno kam2 čvorove [110 229 252], kam1
+  ništa; razdvajanje je oštro (najgori nedetektirani čvor: 2,40 px < 3 px <
+  9,69 px najbolji detektirani). ✅
+- Ne dira algoritme korelacije/triangulacije/deformacija; opcionalno
+  (`'clean', false` vraća staro ponašanje). ✅
 
 ## 2. `stereoTriangulate.m` — linearna DLT triangulacija ✅ ispravno
 

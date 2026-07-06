@@ -19,9 +19,10 @@ površine jedinstven svjetlosni ,,potpis`` po kojem ga korelacijski algoritam mo
 pratiti kroz slijed slika. Čvorovi mreže definiraju točke u kojima se pomak mjeri, a
 između njih se polje pomaka interpolira po elementima. U referentnom stanju mreža
 odgovara projekciji kalibracijske 3D mreže (usporedi Sliku \ref{fig:overlay}), dok u
-deformiranom stanju čvorovi zauzimaju položaje izmjerene 2D korelacijom -- mreža
-vidljivo prati pomak i promjenu oblika mjerne zone u objema kamerama, što je upravo
-informacija koju stereo triangulacija potom prevodi u trodimenzijske pomake.
+deformiranom stanju čvorovi zauzimaju položaje izmjerene 2D korelacijom (nakon
+čišćenja rubnih čvorova, Poglavlje \ref{sec:implementacija}) -- mreža vidljivo prati
+pomak i promjenu oblika mjerne zone u objema kamerama, što je upravo informacija koju
+stereo triangulacija potom prevodi u trodimenzijske pomake.
 
 \begin{figure}[H]
   \centering
@@ -95,14 +96,16 @@ rezultat.
     \node[box, right=of cam1] (dic1) {2D korelacija\\ $\mathbf{U}_1$ (252 čvora)};
     \node[box, right=of cam2] (dic2) {2D korelacija\\ $\mathbf{U}_2$ (252 čvora)};
     \path ($(dic1.east)!0.5!(dic2.east)$) coordinate (mid);
-    \node[box, right=10mm of mid] (tri) {Stereo\\ triangulacija\\ (DLT)};
+    \node[box, right=9mm of mid] (cln) {Čišćenje\\ rubnih čvorova};
+    \node[box, right=of cln] (tri) {Stereo\\ triangulacija\\ (DLT)};
     \node[cal, above=7mm of tri] (cal) {Kalibracija\\ $\mathsf{P}_1$, $\mathsf{P}_2$};
     \node[box, right=of tri] (u3d) {3D pomaci\\ $\mathbf{U}^{\text{3D}}$};
     \node[box, below=7mm of u3d] (strain) {Površinske\\ deformacije $\mathbf{E}$};
     \draw[arr] (cam1) -- (dic1);
     \draw[arr] (cam2) -- (dic2);
-    \draw[arr] (dic1.east) -- (tri.west|-dic1.east) -- (tri.150);
-    \draw[arr] (dic2.east) -- (tri.west|-dic2.east) -- (tri.210);
+    \draw[arr] (dic1.east) -- (cln.west|-dic1.east) -- (cln.150);
+    \draw[arr] (dic2.east) -- (cln.west|-dic2.east) -- (cln.210);
+    \draw[arr] (cln) -- (tri);
     \draw[arr] (cal) -- (tri);
     \draw[arr] (tri) -- (u3d);
     \draw[arr] (u3d) -- (strain);
@@ -121,6 +124,11 @@ Primijenjeni postupak stereo korelacije provodi se u sljedećim koracima:
   \item \textbf{Korespondencija čvorova.} Budući da su obje slikovne mreže projekcije
   iste 3D mreže $\mathsf{M}$, korespondencija čvorova između kamera je zajamčena po
   konstrukciji -- čvor $i$ u kameri 1 odgovara čvoru $i$ u kameri 2.
+  \item \textbf{Čišćenje rubnih čvorova.} Prije rekonstrukcije, izmjerena 2D polja
+  automatski se provjeravaju na lokalno nekonzistentne čvorove (usporedbom s
+  medijanom pomaka susjednih čvorova); pojedinačni čvorovi degradirane korelacije
+  uz rub mjerne zone zamjenjuju se tim medijanom (detalji u Poglavlju
+  \ref{sec:implementacija}).
   \item \textbf{Stereo triangulacija.} Za svaki frame i svaki čvor rekonstruira se 3D
   položaj triangulacijom \eqref{eq:dlt} iz njegovih deformiranih položaja u objema
   kamerama. Referentni 3D oblik dobiva se triangulacijom nedeformiranih položaja.
