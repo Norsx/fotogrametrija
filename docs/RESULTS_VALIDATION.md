@@ -3,7 +3,8 @@
 > Provjera: (a) odgovaraju li brojevi u seminaru (`docs/chapters/04-rezultati.tex`)
 > stvarnim podacima u `data/processed/stereo_06072026_141900/stereo3d_results.mat`,
 > te (b) imaju li vrijednosti fizikalnog smisla u usporedbi s literaturom.
-> Podaci: 300 stanja, 252 čvora, 438 elemenata (Abaqus `S3R`), `ScaleFE = 0.0204`.
+> Podaci: 300 stanja, 252 čvora, 438 elemenata (Abaqus `S3R`), `ScaleFE = 0,02`.
+> Sve vrijednosti zaokružene na 2 decimale (AGENTS.md, pravilo 8).
 
 ## Sažetak
 
@@ -20,12 +21,12 @@ usporedive s literaturom.
 
 | Veličina | Tekst (seminar) | Izračunato (.mat) | Status |
 |---|---|---|---|
-| Najveći ukupni pomak `\|U\|` (zadnje stanje) | ≈ 0,113 | **0,1128** | ✅ točno |
-| Najveća izvanravninska komp. `\|Uz\|` | ≈ 0,079 | **0,0792** | ✅ točno |
+| Najveći ukupni pomak `\|U\|` (zadnje stanje) | ≈ 0,11 | **0,11** | ✅ točno |
+| Najveća izvanravninska komp. `\|Uz\|` | ≈ 0,08 | **0,08** | ✅ točno |
 | Tipična (medijalna) glavna deformacija `E₁` | ≈ 2 % | **1,95 %** (median) | ✅ točno |
-| Skala boja `E₁` (robusni percentil) | p97 | **p97 = 12,8 %** → clim `[0; 0,128]` | ✅ točno |
-| Rekonstrukcija ref. oblika vs. zadana mreža | ~10⁻¹⁵ | **max \|Δ\| = 2,2·10⁻¹⁵** | ✅ točno |
-| Srednja reprojekcijska pogreška | ≈ 0,2 px | **0,197 px** (mean, 504 točke) | ✅ točno |
+| Skala boja `E₁` (robusni percentil) | p97 | **p97 = 12,76 %** → clim `[0; 0,13]` | ✅ točno |
+| Rekonstrukcija ref. oblika vs. zadana mreža | ~10⁻¹⁵ | **max \|Δ\| = 2,22·10⁻¹⁵** | ✅ točno |
+| Srednja reprojekcijska pogreška | ≈ 0,20 px | **0,20 px** (mean, 504 točke) | ✅ točno |
 | Monoton rast pomaka, ubrzanje ~240. frame | opis | krivulja to potvrđuje | ✅ |
 
 Reprojekcijsku pogrešku i podudaranje s `MeshDef` **nezavisno sam izračunao** (nije u
@@ -37,14 +38,14 @@ skripti): triangulacija zadnjeg stanja iz `P1/P2` pa reprojekcija natrag na piks
 
 | Veličina | Naša vrijednost | Tipično u literaturi | Ocjena |
 |---|---|---|---|
-| **Reprojekcijska pogreška** | 0,197 px (mean) | 0,05–0,3 px za dobro kalibriran stereo-DIC; vrhunski sustavi ~0,05 px | ✅ **Smisleno**, na gornjoj granici „dobrog" — subpikselna, prihvatljiva |
-| **Rekonstrukcija ref. oblika** | 2·10⁻¹⁵ (strojna preciznost) | idealno; potvrđuje ispravnost triangulacije/kalibracije | ✅ Odlično (očekivano jer se koriste iste ulazne točke) |
-| **Medijalna deformacija E₁** | ~2 % | vlačni pokus metala: elastično-plastično područje reda 0,1–nekoliko % | ✅ **Fizikalno smisleno** |
-| **Šum polja deformacija** | median 2 %, ali p90 = 6,8 %, p99 = 26 % | element-wise strain iz linearnih trokuta je poznato bučan; DIC noise floor pomaka 0,01–0,1 px | ⚠️ Očekivano bučno (vidi §3) |
-| **Izvanravninski / ukupni pomak** | 0,079 / 0,113 → **70 %** | za zakrivljeni uzorak Uz usporediv s U je normalno i opravdava stereo | ✅ Smisleno, potvrđuje potrebu za 3D |
+| **Reprojekcijska pogreška** | 0,20 px (mean) | 0,05–0,30 px za dobro kalibriran stereo-DIC; vrhunski sustavi ~0,05 px | ✅ **Smisleno**, na gornjoj granici „dobrog" — subpikselna, prihvatljiva |
+| **Rekonstrukcija ref. oblika** | 2,22·10⁻¹⁵ (strojna preciznost) | idealno; potvrđuje ispravnost triangulacije/kalibracije | ✅ Odlično (očekivano jer se koriste iste ulazne točke) |
+| **Medijalna deformacija E₁** | 1,95 % | vlačni pokus metala: elastično-plastično područje reda 0,1–nekoliko % | ✅ **Fizikalno smisleno** |
+| **Šum polja deformacija** | median 1,95 %, ali p90 = 6,79 %, p99 = 25,71 % | element-wise strain iz linearnih trokuta je poznato bučan; DIC noise floor pomaka 0,01–0,10 px | ⚠️ Očekivano bučno (vidi §3) |
+| **Izvanravninski / ukupni pomak** | 0,08 / 0,11 → **70,21 %** | za zakrivljeni uzorak Uz usporediv s U je normalno i opravdava stereo | ✅ Smisleno, potvrđuje potrebu za 3D |
 
 Zaključak literaturne usporedbe: **nijedna vrijednost nije izvan fizikalno očekivanog
-raspona.** Reprojekcijska pogreška 0,2 px je uredna (može bolje uz precizniju
+raspona.** Reprojekcijska pogreška 0,20 px je uredna (može bolje uz precizniju
 kalibraciju, ali nije problematična).
 
 ---
@@ -62,15 +63,15 @@ kalibraciju, ali nije problematična).
   elementi izvor ekstrema, ili filtrirati elemente s malom površinom prije statistike.
 
 ### ⚠️ 3.2 Jedinice su bezdimenzijske („kalibracijske"), ne mm
-- Pomaci (0,113 itd.) su u istim jedinicama kao koordinate mreže (x∈[0; 0,37],
+- Pomaci (0,11 itd.) su u istim jedinicama kao koordinate mreže (x∈[0; 0,37],
   y∈[−0,44; 0,44], z∈[0,91; 1,10]) — to su **normalizirane kalibracijske jedinice**,
-  ne milimetri. `ScaleFE = 0,0204` postoji u podacima ali nije primijenjen na izlaz.
+  ne milimetri. `ScaleFE = 0,02` postoji u podacima ali nije primijenjen na izlaz.
 - Tekst je **korektan** jer dosljedno piše „u mjernim jedinicama kalibracije".
 - Preporuka (opcionalno): ako se zna faktor mjerila (mm/jedinica), pretvoriti pomake u
   mm radi čitljivosti. Deformacije ostaju iste (bezdimenzijske).
 
 ### ℹ️ 3.3 Šum mape deformacija
-- Raspodjela `E₁` je široka (median 2 %, ali dugačak rep do desetaka %). To je
+- Raspodjela `E₁` je široka (median 1,95 %, ali dugačak rep do desetaka %). To je
   **normalno** za deformaciju računatu po elementu na linearnim trokutima i tekst to
   već objašnjava. Zaglađivanje (čvorovna ekstrapolacija / finija mreža) bi to smanjilo.
 
@@ -81,8 +82,8 @@ kalibraciju, ali nije problematična).
 | Graf | Sadržaj | Ocjena |
 |---|---|---|
 | `disp_evolution.png` | `\|U\|` i `\|Uz\|` kroz 300 stanja | ✅ glatko, monotono, ubrzanje ~240; osi i legenda točni |
-| `disp_magnitude.png` | 3D deformirani oblik, boja = `\|U\|` | ✅ zakrivljena površina, glatko polje; colorbar 0,05–0,11 konzistentan s max 0,113 |
-| `strain_E1.png` | mapa `E₁`, clim `[0; 0,128]` | ✅ ispravno odrezano; vidljiv element-wise šum (očekivano) |
+| `disp_magnitude.png` | 3D deformirani oblik, boja = `\|U\|` | ✅ zakrivljena površina, glatko polje; colorbar 0,05–0,11 konzistentan s max 0,11 |
+| `strain_E1.png` | mapa `E₁`, clim `[0; 0,13]` | ✅ ispravno odrezano; vidljiv element-wise šum (očekivano) |
 
 ---
 

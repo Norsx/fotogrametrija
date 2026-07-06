@@ -59,3 +59,11 @@ PDF-ovi nisu u `data/sources/` (detalji i iznimke: REFERENCE.md → Citiranje).
 ## 7. Komunikacija
 
 - **Chat**: hrvatski. **Kod, komentari, commit poruke, README**: engleski.
+
+## 8. Brojčane vrijednosti
+
+- U **izvješćima i tekstu** (Markdown/LaTeX) sve brojčane vrijednosti zaokružuj na
+  **2 decimale** (npr. `0,11`, `12,76 %`). Iznimka: vrijednosti u znanstvenoj notaciji
+  zaokružuju mantisu (npr. `2,22·10⁻¹⁵`).
+- U **kodu i sirovim `.mat`/podatkovnim datotekama** čuvaj punu preciznost —
+  zaokružuje se samo prikaz, ne izvorni podaci.
