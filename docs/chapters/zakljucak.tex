@@ -1,0 +1,20 @@
+\section{Zaključak}
+
+U radu je razvijen i primijenjen funkcionalan sustav za mjerenje trodimenzijskih
+pomaka i deformacija površine objekta pomoću stereo korelacije digitalne slike.
+Primijenjen je pristup koji spaja globalnu 2D korelaciju konačnih elemenata po svakoj
+kameri sa stereo triangulacijom čvorova mreže, čime je uz minimalnu količinu novoga
+koda ostvarena potpuna 3D rekonstrukcija.
+
+Sustav je uspješno primijenjen na stvarni vlačni pokus s 300 deformacijskih stanja.
+Rekonstruirana su glatka polja trodimenzijskih pomaka, jasno obuhvaćajući i ravninske
+i izvanravninske komponente, te pripadna polja površinskih deformacija. Ispravnost
+implementacije potvrđena je rekonstrukcijom referentnog oblika do strojne preciznosti
+i subpikselnom reprojekcijskom pogreškom ($\sim 0{,}2$ piksela).
+
+Time su ispunjeni svi ciljevi zadatka: postavljen je stereovizijski model, provedena
+korelacija između referentnih i deformiranih slika, izračunati 3D pomaci i
+deformacije te vizualizirano deformirano stanje. Mogući smjerovi daljnjeg rada
+uključuju zaglađivanje polja deformacija ekstrapolacijom u čvorove, profinjenje mreže
+u zoni lokalizacije te pretvorbu rezultata u fizičke jedinice pomoću mjerila
+kalibracije.

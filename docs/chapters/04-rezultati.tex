@@ -1,0 +1,64 @@
+\section{Rezultati i rasprava}
+\label{sec:rezultati}
+
+Postupak je primijenjen na 300 deformacijskih stanja vlačnog pokusa. U nastavku su
+prikazani rekonstruirano polje 3D pomaka, evolucija pomaka kroz pokus te polje
+površinskih deformacija.
+
+\subsection{Polje trodimenzijskih pomaka}
+
+Slika \ref{fig:dispmag} prikazuje deformirani oblik mjerne površine obojen iznosom
+ukupnog 3D pomaka. Rekonstruirana površina jasno je zakrivljena, čime se potvrđuje da
+mjerenje obuhvaća i izvanravninsku komponentu koju 2D korelacija ne bi mogla razlučiti.
+Polje pomaka mijenja se glatko po površini, bez naglih diskontinuiteta, što upućuje na
+konzistentnost rekonstrukcije.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{disp_magnitude.png}
+  \caption{Deformirani 3D oblik mjerne površine obojen iznosom ukupnog pomaka
+  $|\mathbf{U}|$ (mjerne jedinice kalibracije), za posljednje deformacijsko stanje.}
+  \label{fig:dispmag}
+\end{figure}
+
+\subsection{Evolucija pomaka}
+
+Slika \ref{fig:evolution} prikazuje najveći ukupni pomak $|\mathbf{U}|$ i najveću
+izvanravninsku komponentu $|U_z|$ kroz niz frameova. Oba iznosa rastu monotono, uz
+izraženo ubrzanje oko 240.\ framea, što odgovara početku lokalizacije deformacije
+(vrata). Izvanravninska komponenta doseže znatan udio ukupnog pomaka, što potvrđuje
+nužnost stereo mjerenja za ovakav uzorak.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.80\textwidth]{disp_evolution.png}
+  \caption{Evolucija najvećeg ukupnog pomaka $|\mathbf{U}|$ i najveće izvanravninske
+  komponente $|U_z|$ kroz deformacijska stanja.}
+  \label{fig:evolution}
+\end{figure}
+
+\subsection{Polje deformacija}
+
+Slika \ref{fig:strain} prikazuje polje glavne deformacije $E_1$ po površini u
+posljednjem stanju. Deformacija je najveća u središnjoj zoni uzorka, u skladu s
+očekivanim ponašanjem pri vlačnom opterećenju. Element-po-element izračunata
+deformacija pokazuje očekivanu razinu šuma svojstvenu deriviranju polja pomaka na
+linearnim trokutastim elementima; skala boja ograničena je robusnim percentilom radi
+uklanjanja utjecaja pojedinačnih degeneriranih rubnih elemenata.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{strain_E1.png}
+  \caption{Polje glavne (najveće) deformacije $E_1$ na rekonstruiranoj 3D površini.}
+  \label{fig:strain}
+\end{figure}
+
+\subsection{Procjena točnosti}
+
+Točnost sustava ocijenjena je posredno. Rekonstrukcija referentnog oblika podudara se
+sa zadanom mrežom do strojne preciznosti ($\sim 10^{-15}$), dok srednja reprojekcijska
+pogreška trianguliranih deformiranih točaka iznosi približno $0{,}2$ piksela. Budući da
+reprojekcijska pogreška objedinjuje pogrešku korelacije, kalibracije i triangulacije,
+subpikselna vrijednost potvrđuje visoku ukupnu točnost mjerenja. Glavni izvor
+preostale nesigurnosti jest šum polja deformacija, koji se može dodatno smanjiti
+zaglađivanjem (npr.\ ekstrapolacijom deformacija u čvorove ili profinjenjem mreže).

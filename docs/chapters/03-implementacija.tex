@@ -1,0 +1,47 @@
+\section{Programska implementacija}
+\label{sec:implementacija}
+
+Sustav je implementiran u programskom paketu MATLAB. Vodeće načelo implementacije
+bilo je ponovno korištenje postojećih, provjerenih komponenti i oslanjanje na
+ugrađene MATLAB funkcije, čime je količina novoga koda svedena na najmanju mjeru.
+
+\subsection{Ponovno korištene komponente}
+
+Korak 2D korelacije po kameri (Poglavlje \ref{sec:metoda}) proveden je postojećim
+algoritmom globalne korelacije konačnih elemenata. Rezultat -- polja čvornih 2D
+pomaka za obje kamere kroz svih 300 obrađenih deformacijskih stanja -- korišten je
+kao ulaz u stereo rekonstrukciju.
+
+\subsection{Nove komponente}
+
+Dodane su tri kratke programske jedinice, prikazane u Tablici \ref{tab:moduli}.
+Triangulacija je izvedena metodom DLT preko ugrađene funkcije za dekompoziciju na
+singularne vrijednosti (\texttt{svd}), a vizualizacija ugrađenim funkcijama
+\texttt{trisurf} i \texttt{patch}.
+
+\begin{table}[H]
+  \centering
+  \caption{Nove programske jedinice modula \texttt{Stereo3DDIC}.}
+  \label{tab:moduli}
+  \begin{tabularx}{\textwidth}{lX}
+    \toprule
+    \textbf{Datoteka} & \textbf{Uloga} \\
+    \midrule
+    \texttt{stereoTriangulate.m} & Linearna (DLT) triangulacija točaka iz dviju
+      kamera prema \eqref{eq:dlt}. \\
+    \texttt{surfaceStrains.m} & Green--Lagrangeove površinske deformacije po elementu
+      prema \eqref{eq:green-lagrange}. \\
+    \texttt{StereoDIC3D.m} & Glavna skripta: učitavanje podataka, triangulacija po
+      frameovima, deformacije, spremanje i vizualizacija. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Provjera ispravnosti}
+
+Ispravnost implementacije potvrđena je na dva načina. Prvo, triangulacija referentnih
+(nedeformiranih) položaja rekonstruira zadanu 3D mrežu s pogreškom reda veličine
+$10^{-15}$, tj. do strojne preciznosti, čime je potvrđena ispravnost triangulacijskog
+postupka i orijentacije projekcijskih matrica. Drugo, srednja reprojekcijska pogreška
+trianguliranih deformiranih točaka iznosi približno $0{,}2$ piksela (subpikselno), što
+potvrđuje ispravno pridruživanje komponenti pomaka i visoku kvalitetu korelacije.

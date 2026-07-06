@@ -1,0 +1,81 @@
+\section{Teorijska podloga}
+\label{sec:teorija}
+
+\subsection{Korelacija digitalne slike}
+
+Korelacija digitalne slike temelji se na praćenju nasumičnog uzorka sivih razina
+(engl. \textit{speckle pattern}) nanesenog na površinu uzorka. Neka je $f(\mathbf{x})$
+razina sivila referentne slike u pikselu $\mathbf{x}=(x,y)$, a $g(\mathbf{x})$ razina
+deformirane slike. Uz pretpostavku očuvanja intenziteta, materijalna točka koja se u
+referentnom stanju nalazi u $\mathbf{x}$ pomiče se u deformiranom stanju u
+$\mathbf{x}+\mathbf{u}(\mathbf{x})$, pa vrijedi
+\begin{equation}
+  f(\mathbf{x}) = g\big(\mathbf{x}+\mathbf{u}(\mathbf{x})\big).
+  \label{eq:opt-flow}
+\end{equation}
+Polje pomaka $\mathbf{u}$ određuje se minimizacijom kvadratnog reziduala sivih razina
+\begin{equation}
+  \boldsymbol{\Phi}^2 = \sum_{\mathbf{x}\in\text{ROI}}
+  \big[ f(\mathbf{x}) - g(\mathbf{x}+\mathbf{u}(\mathbf{x})) \big]^2 .
+  \label{eq:dic-functional}
+\end{equation}
+U \emph{globalnom} pristupu korelacije, korištenom u ovom radu, polje pomaka
+diskretizira se mrežom konačnih elemenata; pomak unutar elementa interpolira se
+funkcijama oblika $N_i$ iz čvornih vrijednosti $\mathbf{u}_i$:
+$\mathbf{u}(\mathbf{x})=\sum_i N_i(\mathbf{x})\,\mathbf{u}_i$. Minimizacija
+\eqref{eq:dic-functional} vodi na linearizirani (Gauss--Newtonov) sustav koji se
+iterativno rješava \cite{sutton2009,hild2006}.
+
+\subsection{Model kamere i projekcijska matrica}
+
+Projekcija točke prostora na ravninu senzora opisuje se modelom rupičaste kamere
+(engl. \textit{pinhole}). Točka $\mathbf{X}=(X,Y,Z)$ u svjetskom koordinatnom sustavu
+preslikava se u piksel $\mathbf{x}=(x,y)$ preko projekcijske matrice
+$\mathsf{P}\in\mathbb{R}^{3\times4}$ u homogenim koordinatama:
+\begin{equation}
+  s\begin{bmatrix} x \\ y \\ 1 \end{bmatrix}
+  = \mathsf{P}\begin{bmatrix} X \\ Y \\ Z \\ 1 \end{bmatrix},
+  \qquad
+  \mathsf{P} = \mathsf{K}\,[\,\mathsf{R}\ |\ \mathbf{t}\,],
+  \label{eq:projection}
+\end{equation}
+gdje je $s$ skalirni faktor, $\mathsf{K}$ matrica unutarnjih parametara (žarišna
+duljina, glavna točka), a $[\mathsf{R}\,|\,\mathbf{t}]$ vanjski parametri (rotacija i
+translacija kamere). Kalibracijom stereovizijskog sustava odrede se projekcijske
+matrice obiju kamera, $\mathsf{P}_1$ i $\mathsf{P}_2$; u ovom radu one su zadane kao
+ulazni podatak.
+
+\subsection{Stereo triangulacija}
+
+Ako je poznat piksel $\mathbf{x}_1$ u prvoj i pripadni piksel $\mathbf{x}_2$ u drugoj
+kameri, trodimenzijska točka $\mathbf{X}$ rekonstruira se \emph{triangulacijom}. Iz
+\eqref{eq:projection} za svaku kameru vrijedi $\mathbf{x}_c \times (\mathsf{P}_c
+\tilde{\mathbf{X}})=\mathbf{0}$, što daje po dvije linearne jednadžbe. Slaganjem
+jednadžbi obiju kamera dobiva se homogeni sustav
+\begin{equation}
+  \mathsf{A}\,\tilde{\mathbf{X}} = \mathbf{0}, \qquad
+  \mathsf{A} =
+  \begin{bmatrix}
+    x_1\,\mathbf{p}_1^{3} - \mathbf{p}_1^{1} \\
+    y_1\,\mathbf{p}_1^{3} - \mathbf{p}_1^{2} \\
+    x_2\,\mathbf{p}_2^{3} - \mathbf{p}_2^{1} \\
+    y_2\,\mathbf{p}_2^{3} - \mathbf{p}_2^{2}
+  \end{bmatrix},
+  \label{eq:dlt}
+\end{equation}
+gdje je $\mathbf{p}_c^{k}$ $k$-ti redak matrice $\mathsf{P}_c$. Rješenje
+$\tilde{\mathbf{X}}$ je desni singularni vektor matrice $\mathsf{A}$ koji odgovara
+najmanjoj singularnoj vrijednosti (metoda \textit{Direct Linear Transformation}, DLT)
+\cite{hartley2004}.
+
+\subsection{Deformacije na površini}
+
+Iz trodimenzijskog polja pomaka određuju se deformacije. Za svaki trokutasti element
+konstruira se lokalni ortonormirani tangencijalni sustav, u kojem se računa gradijent
+deformiranja $\mathsf{F}$ te Green--Lagrangeov tenzor deformacije
+\begin{equation}
+  \mathsf{E} = \tfrac{1}{2}\big(\mathsf{F}^{\mathsf{T}}\mathsf{F} - \mathsf{I}\big).
+  \label{eq:green-lagrange}
+\end{equation}
+Iz komponenti $\mathsf{E}$ dobivaju se glavne deformacije $E_{1,2}$ te ekvivalentna
+(von Misesova) deformacija, koje opisuju lokalno stanje naprezanja površine.

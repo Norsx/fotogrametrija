@@ -1,0 +1,145 @@
+% FSB Seminar — Sveučilište u Zagrebu, Fakultet strojarstva i brodogradnje
+% Stereo korelacija digitalne slike — Ivan Noršić
+
+\documentclass[12pt,a4paper]{article}
+
+% --- Encoding, Font & Language (dual-engine) ---
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{newtxtext}
+\else
+  \usepackage{fontspec}
+  \setmainfont{texgyretermes-regular.otf}[
+    BoldFont       = texgyretermes-bold.otf,
+    ItalicFont     = texgyretermes-italic.otf,
+    BoldItalicFont = texgyretermes-bolditalic.otf
+  ]
+\fi
+\usepackage[croatian]{babel}
+
+% --- Layout ---
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% --- Headers & Footers ---
+\usepackage{fancyhdr}
+\setlength{\headheight}{13.6pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape \authorname}
+\fancyhead[R]{\small\itshape \seminartitleshort}
+\fancyfoot[L]{\small\itshape Fakultet strojarstva i brodogradnje}
+\fancyfoot[R]{\small\itshape\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% --- Section Formatting (14pt Bold Uppercase) ---
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\fontsize{14}{17}\bfseries\MakeUppercase}
+  {\thesection.}{0.5em}{}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12}{15}\bfseries}
+  {\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{12}{15}\bfseries\itshape}
+  {\thesubsubsection.}{0.5em}{}
+
+% --- Figures & Tables ---
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{caption}
+\captionsetup[figure]{font={small,bf},labelsep=period,position=below}
+\captionsetup[table]{font={small,bf},labelsep=period,position=above}
+
+% --- Numbering by section ---
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\counterwithin{equation}{section}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+% --- Croatian names ---
+\addto\captionscroatian{%
+  \renewcommand{\figurename}{Slika}%
+  \renewcommand{\tablename}{Tablica}%
+  \renewcommand{\contentsname}{\normalfont\fontsize{14}{17}\bfseries SADRŽAJ}%
+  \renewcommand{\refname}{\normalfont\fontsize{14}{17}\bfseries LITERATURA}%
+}
+
+% --- References, links, math ---
+\usepackage{cite}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% ============================================================
+% DOCUMENT METADATA
+% ============================================================
+\newcommand{\univname}{SVEUČILIŠTE U ZAGREBU}
+\newcommand{\facultyname}{FAKULTET STROJARSTVA I BRODOGRADNJE}
+\newcommand{\coursename}{FOTOGRAMETRIJA I VIZUALIZACIJA OBJEKATA}
+\newcommand{\seminartitle}{Stereo korelacija digitalne slike -- mjerenje ravninskih i izvanravninskih pomaka na površini}
+\newcommand{\seminartitleshort}{Stereo korelacija digitalne slike}
+\newcommand{\professorname}{Izv. prof. dr. sc. Zvonimir Tomičević}
+\newcommand{\authorname}{Ivan Noršić}
+\newcommand{\locationdate}{Zagreb, 2026.}
+
+% ============================================================
+\begin{document}
+
+% ---- TITLE PAGE ----
+\begin{titlepage}
+  \centering
+  {\fontsize{14}{17}\selectfont \univname \par}
+  {\fontsize{14}{17}\selectfont \facultyname \par}
+  \vfill
+  {\fontsize{24}{30}\bfseries \coursename \par}
+  \vspace{0.8cm}
+  {\fontsize{14}{18}\bfseries \seminartitle \par}
+  \vfill
+  \begin{tabular}{p{0.45\textwidth}>{\raggedleft\arraybackslash}p{0.45\textwidth}}
+    \textmd{Profesor:} & \textmd{Student:} \\[0.3cm]
+    \textbf{\professorname} & \textbf{\authorname}
+  \end{tabular}
+  \vspace{1.5cm}
+  \par
+  {\normalfont \locationdate \par}
+\end{titlepage}
+
+% ---- FRONTMATTER ----
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\tableofcontents
+\clearpage
+
+% ---- BODY ----
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{chapters/00-uvod}
+\input{chapters/01-teorijska-podloga}
+\input{chapters/02-metodologija}
+\input{chapters/03-implementacija}
+\input{chapters/04-rezultati}
+\input{chapters/zakljucak}
+
+% ---- LITERATURA ----
+\clearpage
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}

@@ -35,10 +35,11 @@ Legenda: ✅ gotovo · 🔄 u tijeku · ⬜ predstoji
 ## Faza 6 — Glavna skripta + spremanje ✅
 - `StereoDIC3D.m` (wrapper). Izlaz u `data/processed/stereo_<ddmmyyyy_HHMMSS>/`.
 
-## Faza 7 — Seminar (LaTeX, FSB) ⬜
-- `latex_architect` postavi `docs/`; poglavlja: uvod, teorija stereo-DIC,
-  kalibracija/projekcija, metoda (2D DIC + triangulacija), implementacija,
-  rezultati (polja pomaka/deformacija), procjena točnosti, zaključak.
+## Faza 7 — Seminar (LaTeX, FSB) ✅
+- `docs/` postavljen (FSB predložak): main + poglavlja uvod, teorija, metodologija,
+  implementacija, rezultati, zaključak + `references.bib` + slike.
+- Kompilirano Tectonicom → `docs/main.pdf` (11 str., hrvatski dijakritici OK).
+- `project.yaml` metapodaci popunjeni (autor, kolegij, naslov, mentor).
 
 ---
 

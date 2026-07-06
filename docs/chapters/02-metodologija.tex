@@ -1,0 +1,56 @@
+\section{Metodologija}
+\label{sec:metoda}
+
+\subsection{Eksperimentalni postav}
+
+Mjerenje je provedeno na stereovizijskom sustavu sastavljenom od dviju kamera
+usmjerenih prema površini ispitnog uzorka pod kutom (Slika \ref{fig:overlay}).
+Uzorak je epruveta tipa \textit{dogbone} podvrgnuta vlačnom opterećenju; njezina
+mjerna zona prethodno je pripremljena nanošenjem nasumične crno-bijele teksture
+nužne za korelaciju. Tijekom pokusa obje kamere sinkrono su snimile niz od 1188
+slika po kameri, od kojih prva odgovara nedeformiranom (referentnom) stanju, a
+ostale rastućim razinama deformacije.
+
+\subsection{Kalibracija i geometrijski model}
+
+Stereovizijski sustav kalibriran je unaprijed, čime su određene projekcijske matrice
+obiju kamera $\mathsf{P}_1$ i $\mathsf{P}_2$ te trodimenzijska mreža konačnih
+elemenata $\mathsf{M}$ koja opisuje referentni oblik mjerne površine (252 čvora, 438
+trokutastih elemenata). Ispravnost kalibracije provjerena je projiciranjem čvorova 3D
+mreže u obje kamere prema \eqref{eq:projection}; kao što pokazuje Slika
+\ref{fig:overlay}, projicirana mreža precizno prekriva teksturiranu mjernu zonu u obje
+slike, čime je potvrđena geometrijska konzistentnost sustava.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.49\textwidth]{overlay_cam1.png}
+  \includegraphics[width=0.49\textwidth]{overlay_cam2.png}
+  \caption{Provjera kalibracije: 3D mreža projicirana matricama $\mathsf{P}_1$ (kamera
+  1, lijevo) i $\mathsf{P}_2$ (kamera 2, desno) na referentnu sliku. Mreža prekriva
+  teksturiranu mjernu zonu epruvete.}
+  \label{fig:overlay}
+\end{figure}
+
+\subsection{Postupak mjerenja}
+
+Primijenjeni postupak stereo korelacije provodi se u sljedećim koracima:
+\begin{enumerate}
+  \item \textbf{2D korelacija po kameri.} Za svaku kameru zasebno provodi se globalna
+  korelacija konačnih elemenata između referentne i svake deformirane slike, čime se
+  dobiva polje ravninskih (2D) pomaka čvorova mreže $\mathbf{U}_1$ i $\mathbf{U}_2$.
+  \item \textbf{Korespondencija čvorova.} Budući da su obje slikovne mreže projekcije
+  iste 3D mreže $\mathsf{M}$, korespondencija čvorova između kamera je zajamčena po
+  konstrukciji -- čvor $i$ u kameri 1 odgovara čvoru $i$ u kameri 2.
+  \item \textbf{Stereo triangulacija.} Za svaki frame i svaki čvor rekonstruira se 3D
+  položaj triangulacijom \eqref{eq:dlt} iz njegovih deformiranih položaja u objema
+  kamerama. Referentni 3D oblik dobiva se triangulacijom nedeformiranih položaja.
+  \item \textbf{Polje 3D pomaka.} Trodimenzijski pomak čvora jednak je razlici
+  trianguliranog deformiranog i referentnog položaja,
+  $\mathbf{U}^{\text{3D}} = \mathbf{X}^{\text{def}} - \mathbf{X}^{\text{ref}}$.
+  \item \textbf{Deformacije.} Iz polja 3D pomaka računaju se površinske deformacije
+  \eqref{eq:green-lagrange} po elementu.
+\end{enumerate}
+
+Ovakav pristup -- 2D korelacija po kameri praćena triangulacijom -- omogućuje
+izravno ponovno korištenje postojećeg, provjerenog algoritma 2D korelacije, uz
+minimalnu dodatnu programsku logiku za stereo rekonstrukciju.

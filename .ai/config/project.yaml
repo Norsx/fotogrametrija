@@ -6,12 +6,12 @@ brain_mode: "global"         # none | global
 # if GEMINI_API_KEY is set in .env, otherwise local sentence-transformers.
 
 # --- Metadata za naslovnicu (latex_architect popunjava main.tex) ---
-author_name: ""              # Ime i prezime studenta
-course_name: ""              # Naziv kolegija (UPPERCASE u dokumentu)
-seminar_title: ""            # Puni naslov seminara
-seminar_title_short: ""      # Skraćeni naslov za header (max ~50 znakova)
-professor_title: ""          # Titula (npr. "Prof. dr. sc.")
-professor_name: ""           # Ime i prezime profesora
+author_name: "Ivan Noršić"                    # Ime i prezime studenta
+course_name: "Fotogrametrija i vizualizacija objekata"   # Naziv kolegija
+seminar_title: "Stereo korelacija digitalne slike – mjerenje ravninskih i izvanravninskih pomaka na površini"
+seminar_title_short: "Stereo korelacija digitalne slike"  # Skraćeni naslov za header
+professor_title: "Izv. prof. dr. sc."         # Titula
+professor_name: "Zvonimir Tomičević"          # Ime i prezime profesora
 
 # --- Build & page limit ---
 max_pages: 12                # build skripta upozorava ako PDF premašuje N stranica
