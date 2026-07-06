@@ -43,5 +43,24 @@ Ispravnost implementacije potvrđena je na dva načina. Prvo, triangulacija refe
 (nedeformiranih) položaja rekonstruira zadanu 3D mrežu s pogreškom reda veličine
 $10^{-15}$, tj. do strojne preciznosti, čime je potvrđena ispravnost triangulacijskog
 postupka i orijentacije projekcijskih matrica. Drugo, srednja reprojekcijska pogreška
-trianguliranih deformiranih točaka iznosi približno $0{,}2$ piksela (subpikselno), što
-potvrđuje ispravno pridruživanje komponenti pomaka i visoku kvalitetu korelacije.
+trianguliranih deformiranih točaka iznosi približno $0{,}20$ piksela (medijan
+$0{,}13$ px), što potvrđuje ispravno pridruživanje komponenti pomaka i visoku
+kvalitetu korelacije.
+
+Prostorna razdioba reprojekcijske pogreške po čvorovima (Slika \ref{fig:reproj})
+otkriva i njezinu strukturu: za veliku većinu čvorova pogreška je ispod $0{,}33$
+piksela (95.\ percentil), dok tek tri čvora -- svi smješteni na samom rubu mjerne
+mreže -- pokazuju pogreške od $3{,}90$ do $6{,}25$ piksela. To je poznato svojstvo
+korelacije uz rub mjerne zone: rubni elementi raspolažu s manje slikovne informacije
+pa je tamošnji pomak slabije određen. Ti čvorovi objašnjavaju lokalne artefakte u
+polju deformacija uz rub (Poglavlje \ref{sec:rezultati}), a na globalne rezultate
+nemaju mjerljiv utjecaj.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{reproj_error.png}
+  \caption{Reprojekcijska pogreška po čvoru za posljednje deformacijsko stanje
+  (veća od pogreške u kameri 1 i kameri 2). Crveno su označena tri rubna čvora s
+  degradiranom korelacijom.}
+  \label{fig:reproj}
+\end{figure}

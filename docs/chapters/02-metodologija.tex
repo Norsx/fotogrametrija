@@ -12,6 +12,23 @@ korelaciju. Tijekom pokusa obje su kamere snimile po 1188 vremenski usklađenih 
 od kojih prva odgovara nedeformiranom (referentnom) stanju, a ostale rastućim razinama
 deformacije. U ovom je radu analizirano prvih 300 deformacijskih stanja.
 
+Slika \ref{fig:speckle} prikazuje mjernu zonu snimljenu kamerom 1 u referentnom i u
+posljednjem analiziranom stanju. Nasumična tekstura (engl.\ \textit{speckle pattern})
+daje svakom dijelu površine jedinstven svjetlosni ,,potpis`` po kojem ga korelacijski
+algoritam može pratiti kroz slijed slika. Na referentnu sliku ucrtani su čvorovi
+mjerne mreže: oni definiraju točke u kojima se pomak mjeri, a između njih se polje
+pomaka interpolira po elementima. Već se vizualnom usporedbom dvaju stanja uočava
+pomak i blaga promjena oblika mjerne zone, koje će korelacija kvantificirati.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{speckle_frames.png}
+  \caption{Mjerna zona s nasumičnom teksturom (kamera 1): referentno stanje s
+  ucrtanim čvorovima mjerne mreže (lijevo) i posljednje analizirano deformirano
+  stanje (desno).}
+  \label{fig:speckle}
+\end{figure}
+
 \subsection{Kalibracija i geometrijski model}
 
 Stereovizijski sustav kalibriran je unaprijed, čime su određene projekcijske matrice
@@ -21,6 +38,24 @@ trokutastih elemenata). Ispravnost kalibracije provjerena je projiciranjem čvor
 mreže u obje kamere prema \eqref{eq:projection}; kao što pokazuje Slika
 \ref{fig:overlay}, projicirana mreža precizno prekriva teksturiranu mjernu zonu u obje
 slike, čime je potvrđena geometrijska konzistentnost sustava.
+
+Referentni oblik mjerne površine opisan mrežom $\mathsf{M}$ prikazan je na Slici
+\ref{fig:meshref}. Površina je izrazito zakrivljena u smjeru osi $y$ (raspon
+koordinate $z$ iznosi oko 20\,\% raspona koordinate $y$), što odmah objašnjava zašto
+je za ovaj uzorak nužno stereo mjerenje: svaka promjena tog zakrivljenog oblika ima
+značajnu komponentu prema kamerama, koju jedna kamera ne može razdvojiti od
+ravninskog gibanja. Mreža je pravilna, s trokutima približno jednakih stranica
+(medijalni omjer najdulje i najkraće stranice iznosi svega $1{,}03$), što pogoduje
+stabilnosti korelacije i kasnijeg računanja deformacija.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{mesh_ref.png}
+  \caption{Referentni 3D oblik mjerne površine: mreža konačnih elemenata
+  $\mathsf{M}$ (252 čvora, 438 trokutastih elemenata) dobivena kalibracijom sustava,
+  u kalibracijskim jedinicama.}
+  \label{fig:meshref}
+\end{figure}
 
 \begin{figure}[H]
   \centering
@@ -33,6 +68,47 @@ slike, čime je potvrđena geometrijska konzistentnost sustava.
 \end{figure}
 
 \subsection{Postupak mjerenja}
+
+Cjelokupan tok obrade podataka sažet je na Slici \ref{fig:pipeline}. Dvije neovisne
+grane 2D korelacije (po jedna za svaku kameru) spajaju se u koraku triangulacije,
+koji uz kalibracijske matrice $\mathsf{P}_1$ i $\mathsf{P}_2$ prevodi parove
+ravninskih pomaka u trodimenzijske. Deformacije se zatim računaju isključivo iz
+rekonstruiranog 3D polja, pa naslijeđene 2D veličine ne ulaze izravno u konačni
+rezultat.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[
+    font=\small,
+    box/.style={draw, rounded corners=2pt, align=center, fill=black!5,
+                inner sep=2.2mm, minimum height=11mm},
+    cal/.style={draw, rounded corners=2pt, align=center, fill=black!12,
+                inner sep=2.2mm, minimum height=9mm},
+    arr/.style={-{Latex[length=2.2mm]}, thick},
+    node distance=5mm and 8mm
+  ]
+    \node[box] (cam1) {Kamera 1\\ referentna + 300 slika};
+    \node[box, below=9mm of cam1] (cam2) {Kamera 2\\ referentna + 300 slika};
+    \node[box, right=of cam1] (dic1) {2D korelacija\\ $\mathbf{U}_1$ (252 čvora)};
+    \node[box, right=of cam2] (dic2) {2D korelacija\\ $\mathbf{U}_2$ (252 čvora)};
+    \path ($(dic1.east)!0.5!(dic2.east)$) coordinate (mid);
+    \node[box, right=10mm of mid] (tri) {Stereo\\ triangulacija\\ (DLT)};
+    \node[cal, above=7mm of tri] (cal) {Kalibracija\\ $\mathsf{P}_1$, $\mathsf{P}_2$};
+    \node[box, right=of tri] (u3d) {3D pomaci\\ $\mathbf{U}^{\text{3D}}$};
+    \node[box, below=7mm of u3d] (strain) {Površinske\\ deformacije $\mathbf{E}$};
+    \draw[arr] (cam1) -- (dic1);
+    \draw[arr] (cam2) -- (dic2);
+    \draw[arr] (dic1.east) -- (tri.west|-dic1.east) -- (tri.150);
+    \draw[arr] (dic2.east) -- (tri.west|-dic2.east) -- (tri.210);
+    \draw[arr] (cal) -- (tri);
+    \draw[arr] (tri) -- (u3d);
+    \draw[arr] (u3d) -- (strain);
+  \end{tikzpicture}
+  \caption{Tok obrade podataka: neovisna 2D korelacija po kameri, stereo
+  triangulacija s kalibracijskim matricama te izračun 3D pomaka i površinskih
+  deformacija.}
+  \label{fig:pipeline}
+\end{figure}
 
 Primijenjeni postupak stereo korelacije provodi se u sljedećim koracima:
 \begin{enumerate}

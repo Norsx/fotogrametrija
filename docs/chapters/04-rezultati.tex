@@ -2,8 +2,8 @@
 \label{sec:rezultati}
 
 Postupak je primijenjen na 300 deformacijskih stanja vlačnog pokusa. U nastavku su
-prikazani rekonstruirano polje 3D pomaka, evolucija pomaka kroz pokus te polje
-površinskih deformacija.
+prikazani rekonstruirano polje 3D pomaka, njegove komponente, evolucija pomaka kroz
+pokus te polje površinskih deformacija, uz raspravu točnosti i uočenih artefakata.
 
 \subsection{Polje trodimenzijskih pomaka}
 
@@ -11,7 +11,9 @@ Slika \ref{fig:dispmag} prikazuje deformirani oblik mjerne površine obojen izno
 ukupnog 3D pomaka. Rekonstruirana površina jasno je zakrivljena, čime se potvrđuje da
 mjerenje obuhvaća i izvanravninsku komponentu koju 2D korelacija ne bi mogla razlučiti.
 Polje pomaka mijenja se glatko po površini, bez naglih diskontinuiteta, što upućuje na
-konzistentnost rekonstrukcije.
+konzistentnost rekonstrukcije. Iznimka je ,,nazubljeni`` donji rub površine -- posljedica
+degradirane korelacije na nekoliko rubnih čvorova (Slika \ref{fig:reproj}), o čemu se
+detaljnije raspravlja u odjeljku \ref{ssec:tocnost}.
 
 \begin{figure}[H]
   \centering
@@ -21,15 +23,41 @@ konzistentnost rekonstrukcije.
   \label{fig:dispmag}
 \end{figure}
 
+Razlaganje pomaka na komponente (Slika \ref{fig:dispcomp}) daje jasniju fizikalnu
+sliku gibanja. Komponenta $U_x$ (uzduž kraće osi mjerne zone) praktički je
+zanemariva. Ravninsko gibanje gotovo u cijelosti nosi komponenta $U_y$, pozitivna i
+približno jednolika po površini, što odgovara vlačnom razvlačenju uzorka u smjeru
+osi $y$ uz pomak mjerne zone kao cjeline. Izvanravninska komponenta $U_z$ posvuda je
+negativna -- cijela se površina tijekom pokusa pomiče prema kamerama odnosno
+,,spljošćuje``, s najvećim iznosom na zakrivljenijem dijelu zone. Upravo ta
+kombinacija (usporedivi $U_y$ i $U_z$) čini uzorak reprezentativnim testom stereo
+metode: jednokamerna 2D korelacija interpretirala bi izvanravninski pomak kao lažnu
+ravninsku deformaciju.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{disp_components.png}
+  \caption{Komponente 3D pomaka $U_x$, $U_y$ i $U_z$ za posljednje deformacijsko
+  stanje, na zajedničkoj divergentnoj skali (kalibracijske jedinice). Ravninsko
+  gibanje dominantno nosi $U_y$, a izvanravninsko $U_z$.}
+  \label{fig:dispcomp}
+\end{figure}
+
 \subsection{Evolucija pomaka}
 
 Slika \ref{fig:evolution} prikazuje najveći ukupni pomak $|\mathbf{U}|$ i najveću
-izvanravninsku komponentu $|U_z|$ kroz niz frameova. Oba iznosa rastu monotono, uz
-izraženo ubrzanje oko 240.\ framea. U posljednjem stanju najveći ukupni pomak iznosi
-približno $0{,}113$, a najveća izvanravninska komponenta $0{,}079$ (u mjernim
-jedinicama kalibracije) -- izvanravninski je pomak dakle usporediv s ravninskim, što
-potvrđuje nužnost stereo mjerenja za ovakav uzorak; dvodimenzijska korelacija tu
-komponentu ne bi mogla razlučiti.
+izvanravninsku komponentu $|U_z|$ kroz niz frameova. Na krivuljama se razlikuju tri
+karakteristična područja. Prvih dvadesetak frameova čini plato na razini
+$\approx 0{,}003$ kalibracijskih jedinica: uzorak još nije značajno opterećen pa
+izmjerene vrijednosti predstavljaju efektivnu razinu šuma mjernog lanca (oko 3\,\%
+konačnog pomaka). Slijedi područje približno linearnog rasta, a od otprilike 240.\
+framea rast se ubrzava -- nagib krivulje u završnom dijelu pokusa dvostruko je veći
+($2{,}05\times$) od nagiba u sredini pokusa, što je konzistentno s ulaskom materijala
+u izraženije plastično tečenje. U posljednjem stanju najveći ukupni pomak iznosi
+približno $0{,}11$, a najveća izvanravninska komponenta $0{,}08$ (u mjernim
+jedinicama kalibracije) -- izvanravninski pomak doseže $70{,}21\,\%$ ukupnoga, dakle
+posve je usporediv s ravninskim, što potvrđuje nužnost stereo mjerenja za ovakav
+uzorak.
 
 \begin{figure}[H]
   \centering
@@ -43,11 +71,15 @@ komponentu ne bi mogla razlučiti.
 
 Slika \ref{fig:strain} prikazuje polje glavne deformacije $E_1$ po površini u
 posljednjem stanju. Tipična (medijalna) vrijednost glavne deformacije iznosi približno
-2\%, uz povišene vrijednosti prema rubu mjerne zone. Deformacija računata po elementu
-pokazuje razinu šuma svojstvenu deriviranju polja pomaka na linearnim trokutastim
-elementima, koja je izraženija na tankim rubnim elementima; skala boja stoga je
-ograničena robusnim percentilom radi uklanjanja utjecaja pojedinačnih degeneriranih
-elemenata.
+2\,\% ($1{,}95\,\%$), što je red veličine očekivan za vlačni pokus metalnog uzorka u
+elastično-plastičnom području. Deformacija računata po elementu pokazuje razinu šuma
+svojstvenu deriviranju polja pomaka na linearnim trokutastim elementima; skala boja
+stoga je ograničena robusnim 97.\ percentilom ($12{,}76\,\%$) radi uklanjanja utjecaja
+pojedinačnih nepouzdanih elemenata. Povišene vrijednosti koncentrirane su uz rub
+mjerne zone: analiza reprojekcijske pogreške (Slika \ref{fig:reproj}) pokazuje da one
+ne potječu od geometrije mreže (trokuti su gotovo jednakostranični), nego od rubnih
+čvorova s degradiranom korelacijom, čiji se pogrešni pomaci deriviranjem pojačavaju u
+susjednim elementima.
 
 \begin{figure}[H]
   \centering
@@ -57,11 +89,23 @@ elemenata.
 \end{figure}
 
 \subsection{Procjena točnosti}
+\label{ssec:tocnost}
 
-Točnost sustava ocijenjena je posredno. Rekonstrukcija referentnog oblika podudara se
-sa zadanom mrežom do strojne preciznosti ($\sim 10^{-15}$), dok srednja reprojekcijska
-pogreška trianguliranih deformiranih točaka iznosi približno $0{,}2$ piksela. Budući da
-reprojekcijska pogreška objedinjuje pogrešku korelacije, kalibracije i triangulacije,
-subpikselna vrijednost potvrđuje visoku ukupnu točnost mjerenja. Glavni izvor
-preostale nesigurnosti jest šum polja deformacija, koji se može dodatno smanjiti
-zaglađivanjem (npr.\ ekstrapolacijom deformacija u čvorove ili profinjenjem mreže).
+Točnost sustava ocijenjena je posredno, kroz tri neovisna pokazatelja. Prvo,
+rekonstrukcija referentnog oblika podudara se sa zadanom mrežom do strojne
+preciznosti ($\sim 10^{-15}$), čime je isključena sustavna pogreška triangulacije.
+Drugo, srednja reprojekcijska pogreška trianguliranih deformiranih točaka iznosi
+približno $0{,}20$ piksela (medijan $0{,}13$ px) -- budući da ta veličina objedinjuje
+pogrešku korelacije, kalibracije i triangulacije, subpikselna vrijednost potvrđuje
+visoku ukupnu točnost mjerenja i u razini je vrijednosti koje se u literaturi navode
+za dobro kalibrirane stereo-DIC sustave. Treće, plato krivulje evolucije u
+neopterećenom dijelu pokusa daje procjenu šuma pomaka od $\approx 0{,}003$
+kalibracijskih jedinica.
+
+Glavni izvor preostale nesigurnosti lokalne je naravi: tri čvora na samom rubu mreže
+s reprojekcijskom pogreškom od $3{,}90$ do $6{,}25$ piksela (Slika \ref{fig:reproj}),
+uzrokovanom manjkom slikovne informacije u rubnim elementima. Njihov je utjecaj
+ograničen na susjedne elemente polja deformacija (rubni artefakti na Slikama
+\ref{fig:dispmag} i \ref{fig:strain}), a mogao bi se dodatno suzbiti isključivanjem
+čvorova s reprojekcijskom pogreškom većom od $1$ piksela, zaglađivanjem deformacija
+ekstrapolacijom u čvorove ili profinjenjem mreže uz rub.
