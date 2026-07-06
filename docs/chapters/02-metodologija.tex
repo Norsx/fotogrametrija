@@ -12,20 +12,23 @@ korelaciju. Tijekom pokusa obje su kamere snimile po 1188 vremenski usklađenih 
 od kojih prva odgovara nedeformiranom (referentnom) stanju, a ostale rastućim razinama
 deformacije. U ovom je radu analizirano prvih 300 deformacijskih stanja.
 
-Slika \ref{fig:speckle} prikazuje mjernu zonu snimljenu kamerom 1 u referentnom i u
-posljednjem analiziranom stanju. Nasumična tekstura (engl.\ \textit{speckle pattern})
-daje svakom dijelu površine jedinstven svjetlosni ,,potpis`` po kojem ga korelacijski
-algoritam može pratiti kroz slijed slika. Na referentnu sliku ucrtani su čvorovi
-mjerne mreže: oni definiraju točke u kojima se pomak mjeri, a između njih se polje
-pomaka interpolira po elementima. Već se vizualnom usporedbom dvaju stanja uočava
-pomak i blaga promjena oblika mjerne zone, koje će korelacija kvantificirati.
+Slika \ref{fig:speckle} prikazuje mjernu zonu snimljenu objema kamerama u
+referentnom i u posljednjem analiziranom stanju, s ucrtanom projiciranom mjernom
+mrežom. Nasumična tekstura (engl.\ \textit{speckle pattern}) daje svakom dijelu
+površine jedinstven svjetlosni ,,potpis`` po kojem ga korelacijski algoritam može
+pratiti kroz slijed slika. Čvorovi mreže definiraju točke u kojima se pomak mjeri, a
+između njih se polje pomaka interpolira po elementima. U referentnom stanju mreža
+odgovara projekciji kalibracijske 3D mreže (usporedi Sliku \ref{fig:overlay}), dok u
+deformiranom stanju čvorovi zauzimaju položaje izmjerene 2D korelacijom -- mreža
+vidljivo prati pomak i promjenu oblika mjerne zone u objema kamerama, što je upravo
+informacija koju stereo triangulacija potom prevodi u trodimenzijske pomake.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.95\textwidth]{speckle_frames.png}
-  \caption{Mjerna zona s nasumičnom teksturom (kamera 1): referentno stanje s
-  ucrtanim čvorovima mjerne mreže (lijevo) i posljednje analizirano deformirano
-  stanje (desno).}
+  \includegraphics[width=0.88\textwidth]{speckle_frames.png}
+  \caption{Projicirana mjerna mreža na mjernoj zoni s nasumičnom teksturom:
+  referentno stanje (lijevi stupac) i posljednje analizirano deformirano stanje
+  (desni stupac), za kameru 1 (gornji red) i kameru 2 (donji red).}
   \label{fig:speckle}
 \end{figure}
 

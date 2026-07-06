@@ -108,23 +108,37 @@ fig.tight_layout()
 fig.savefig(os.path.join(OUT, "reproj_error.png"), dpi=150)
 plt.close(fig)
 
-# ------------------------------------------------- 4. speckle: reference vs deformed frame (cam1)
+# --------------------- 4. projected mesh on ref/deformed frames, both cameras (2x2)
+# Mesh style matches the calibration overlays (green edges + red nodes).
 import matplotlib.image as mpimg
-f0 = mpimg.imread(os.path.join(ROOT, "data/raw/cam1/frame_000001.png"))
-f3 = mpimg.imread(os.path.join(ROOT, "data/raw/cam1/frame_000300.png"))
-# crop to the measuring zone: use cam1 mesh bounding box with margin
-x_min, y_min = xy1.min(axis=0); x_max, y_max = xy1.max(axis=0)
-mx = 0.10 * (x_max - x_min); my = 0.10 * (y_max - y_min)
-c0 = int(max(x_min - mx, 0)); c1 = int(x_max + mx)
-r0 = int(max(y_min - my, 0)); r1 = int(y_max + my)
-fig, axes = plt.subplots(1, 2, figsize=(11, 4.6))
-for ax, img, ttl in zip(axes, (f0, f3), ("Referentno stanje (frame 1)", "Deformirano stanje (frame 300)")):
-    ax.imshow(img[r0:r1, c0:c1], cmap="gray")
-    ax.set_title(ttl); ax.axis("off")
-axes[0].plot(xy1[:, 0] - c0, xy1[:, 1] - r0, ".", ms=2.5, color="#e67e22", alpha=0.85)
-fig.suptitle("Nasumična tekstura (speckle) mjerne zone — kamera 1", y=0.98)
+u1 = lastU(d1); u2 = lastU(d2)
+cams = [
+    ("Kamera 1", "cam1", xy1, u1),
+    ("Kamera 2", "cam2", xy2, u2),
+]
+fig, axes = plt.subplots(2, 2, figsize=(10, 10.6))
+for row, (name, folder, xy, u) in enumerate(cams):
+    f0 = mpimg.imread(os.path.join(ROOT, f"data/raw/{folder}/frame_000001.png"))
+    f3 = mpimg.imread(os.path.join(ROOT, f"data/raw/{folder}/frame_000300.png"))
+    # crop to this camera's measuring zone (bbox over ref+def nodes, with margin)
+    allp = np.vstack([xy, xy + u])
+    x_min, y_min = allp.min(axis=0); x_max, y_max = allp.max(axis=0)
+    mx = 0.15 * (x_max - x_min); my = 0.15 * (y_max - y_min)
+    c0 = int(max(x_min - mx, 0)); c1 = int(x_max + mx)
+    r0 = int(max(y_min - my, 0)); r1 = int(y_max + my)
+    for col, (img, pts, state) in enumerate([
+            (f0, xy,     "referentno stanje (frame 1)"),
+            (f3, xy + u, "deformirano stanje (frame 300)")]):
+        ax = axes[row, col]
+        ax.imshow(img[r0:r1, c0:c1], cmap="gray")
+        ax.triplot(pts[:, 0] - c0, pts[:, 1] - r0, conn,
+                   color="#2ecc40", linewidth=0.55, alpha=0.9)
+        ax.plot(pts[:, 0] - c0, pts[:, 1] - r0, ".", ms=2.2, color="#ff4136")
+        ax.set_title(f"{name} — {state}", fontsize=10)
+        ax.axis("off")
+fig.suptitle("Projicirana mjerna mreža na referentnom i deformiranom stanju", y=0.995)
 fig.tight_layout()
-fig.savefig(os.path.join(OUT, "speckle_frames.png"), dpi=150)
+fig.savefig(os.path.join(OUT, "speckle_frames.png"), dpi=150, bbox_inches="tight")
 plt.close(fig)
 
 print("Output:", OUT)
