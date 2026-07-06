@@ -15,8 +15,13 @@
 - **Stereo-DIC (3D) kod GOTOV i validiran** ✅ — `src/Stereo3DDIC/` (2D DIC po kameri
   → stereo triangulacija `Pi1/Pi2` → 3D pomaci → deformacije). Rezultati u
   `data/processed/stereo_*/` (polja pomaka, E₁, evolucija). Vidi `src/Stereo3DDIC/PLAN.md`.
-- **Seminar (LaTeX) GOTOV** ✅ — `docs/` (FSB predložak, 6 poglavlja + reference + slike),
-  kompilira Tectonicom u 11-str. PDF. `project.yaml` popunjen.
+- **Seminar (LaTeX) GOTOV i PROŠIREN** ✅ — `docs/` (FSB predložak, 6 poglavlja +
+  reference + 9 slika, uklj. TikZ dijagram pipelinea), kompilira Tectonicom
+  (`C:/Users/ivann/AppData/Local/tectonic/tectonic.exe`) u 15-str. PDF.
+- **Revizija (07.07.2026.)** ✅ — analiza koda: `docs/CODE_ANALYSIS.md` (nema bugova);
+  validacija rezultata + literatura: `docs/RESULTS_VALIDATION.md`. Ključni nalaz:
+  E₁ outlieri dolaze od degradirane korelacije na 3 rubna čvora (reproj. 3,90–6,25 px),
+  ne od geometrije elemenata; tekst seminara usklađen.
 - **SVE FAZE ZAVRŠENE** (kod + seminar). Za predaju: `build-docs --version v1.0`.
 - Metoda: reuse `T3DIC` + MATLAB built-ins (`svd`, `trisurf`); minimalno novog koda.
 
