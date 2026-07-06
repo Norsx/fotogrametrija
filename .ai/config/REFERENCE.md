@@ -16,7 +16,7 @@ Ovo je workspace za pisanje seminara, zadaća i akademskih radova uz pomoć AI a
 | `docs/code/` | Snippeti koda za ispis u dokumentu | Paketi poput `minted` ili `listings` |
 | `src/` | Programski kod (`.py`, `.cpp`, `.js`…) ako zadatak to zahtijeva | |
 | `dist/` | Konačne verzije za predaju. **Obavezno u podfoldere po verziji**: `dist/v1.0/`, `dist/v1.1/` itd. | PDF-ovi su gitignorirani |
-| `data/raw/` | Sirovi ulazni podaci. **READ-ONLY** — nikad se ne mjenjaju | Git hook blokira promjene |
+| `data/raw/` | Sirovi ulazni podaci. **READ-ONLY** — nikad se ne mjenjaju | Git hook blokira promjene. Snimke kamera: `data/raw/cam1/`, `data/raw/cam2/` (git-ignored, ~1.3 GB, lokalno; opis u `data/raw/RECORDINGS.md`) |
 | `data/processed/` | Obrađeni podaci. Sve u subfolderima oblika `izvor_ddmmyyyy_hhmmss` | |
 | `data/sources/` | PDF literatura, članci, prezentacije za RAG bazu | Praćeni putem Git LFS |
 | `.ai/` | Interne konfiguracije, skripte, RAG baza projekta | Ne mijenjati bez razloga |

@@ -15,9 +15,8 @@
 - Nadogradnja postojećeg 2D `GlobalT3DIC` u **globalni FE stereo-DIC (3D)**.
   Potvrđene odluke: metoda = globalni FE (reuse T3DIC); kalibracija = koristi dane
   `Pi1`/`Pi2` (ne kalibriramo iznova); isporuka = MATLAB kod **+** LaTeX seminar.
-- **Otvoreno pitanje (blocker za stvarne rezultate)**: slike iz obje kamere
-  (referentne + deformirane) — provjeriti postoje li na disku; ako ne, ide
-  sintetička validacija (generiranje slika projekcijom preko `Pi1`/`Pi2`).
+- **Slike su stigle** ✅ — sekvence obiju kamera (2×1188 PNG) u `data/raw/cam1|cam2/`.
+  Blocker riješen; možemo raditi stvarno mjerenje (bez simulacije).
 
 ## Bilješke
 
@@ -38,6 +37,7 @@ Razmješteno prema pravilima iz `AGENTS.md` (rule 2) i `.ai/config/REFERENCE.md`
 | `Mesh_1.mat`, `Mesh_2.mat` | `data/raw/` | Sirovi ulazni podaci — **READ-ONLY** |
 | `T3DIC/Functions/persson04mesh.pdf` | `data/sources/` | PDF literatura za RAG — praćeno Git LFS-om |
 | Tekst zadatka (iz PDF-a, str. 7–8) | `data/raw/ZADATAK.md` | Dani, nepromjenjivi zadatak od profesora — **READ-ONLY** |
+| Snimke eksperimenta `cam1/`, `cam2/` (2×1188 PNG) | `data/raw/cam1/`, `data/raw/cam2/` | Sirove slike kamera — **READ-ONLY**, git-ignored (~1.3 GB, lokalno). Opis: [`data/raw/RECORDINGS.md`](data/raw/RECORDINGS.md) |
 
 Napomena: `persson04mesh.pdf` (Persson 2004, mesh generation) je izmješten iz koda
 u `data/sources/` jer je literatura, a ne kod. Detaljniji opis strukture koda:

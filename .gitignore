@@ -53,3 +53,8 @@ TestRealm/
 
 # Claude Code git worktrees — runtime, never tracked
 .claude/worktrees/
+
+# Raw experiment recordings — too large for git/LFS (~1.3 GB of PNG frames).
+# Kept locally in data/raw/, documented in STATE.md. Never pushed.
+data/raw/cam1/
+data/raw/cam2/
