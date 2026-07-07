@@ -26,6 +26,17 @@
   `data/processed/stereo_07072026_012442/`. Reproj. 0,20→0,15 px (max 6,25→1,10);
   E₁ max 328,69 %→27,36 %; „koljeno" evolucije na ~240 bilo artefakt (nagib 2,05→1,21).
   Seminar u cijelosti usklađen (17 str.); MATLAB: `C:/Program Files/MATLAB/R2025b`.
+- **Dorada seminara (07.07.2026., 2. krug)** ✅ — implementirano svih 10 točaka
+  korisnikove revizije: (0) mjerna nesigurnost iz 20 slika neopterećenog uzorka
+  (`src/T3DIC/RunUncertaintyBatch.m` → `data/processed/uncertainty_07072026_160607/`;
+  σ_U = 2,57·10⁻³ mm ≈ 0,05 px cam1, 3,40·10⁻³ mm ≈ 0,07 px cam2 + studija
+  veličine elemenata), (1) ChArUco terminologija, (2–3) baza 5,91 (≈64,75 mm),
+  kut 9,32°, speckle sprej, 3 N predopterećenje, 1 mm/min, (4–5) SSD kriterij,
+  T3 linearni elementi ~10 px, mreža neovisna o kalibraciji, (6) sve u mm:
+  px_size = 0,0502 mm/px, 218,24 px/kalib.jed. → 10,96 mm/jed.
+  (`docs/code/make_unit_figures.py`), (7) obrazloženje 300 frameova,
+  (8, 10) geometrija uzorka (PLA, 160 mm, luk R31) + `geometrija.jpg`,
+  (9) tipfeleri/captioni/zaključak. PDF: 25 str., kompilira čisto.
 - **SVE FAZE ZAVRŠENE** (kod + seminar). Za predaju: `build-docs --version v1.0`.
 - Metoda: reuse `T3DIC` + MATLAB built-ins (`svd`, `trisurf`); minimalno novog koda.
 

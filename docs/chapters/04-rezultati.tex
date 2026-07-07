@@ -3,13 +3,19 @@
 
 Postupak je primijenjen na 300 deformacijskih stanja vlačnog pokusa. U nastavku su
 prikazani rekonstruirano polje 3D pomaka, njegove komponente, evolucija pomaka kroz
-pokus te polje površinskih deformacija, uz raspravu točnosti. Svi rezultati
-uključuju čišćenje rubnih čvorova opisano u odjeljku \ref{ssec:ciscenje}.
+pokus te polje površinskih deformacija, uz izravno određenu mjernu nesigurnost i
+raspravu točnosti. Svi rezultati
+uključuju čišćenje rubnih čvorova opisano u odjeljku \ref{ssec:ciscenje} i
+izraženi su u fizikalnim jedinicama (milimetrima), uz pikselske ekvivalente prema
+mjerilu slike od $0{,}0502$\,mm/px i mjerilu prostora od $10{,}96$\,mm po
+kalibracijskoj jedinici (odjeljak \ref{sssec:parametri}).
 
 \subsection{Polje trodimenzijskih pomaka}
 
 Slika \ref{fig:dispmag} prikazuje deformirani oblik mjerne površine obojen iznosom
-ukupnog 3D pomaka. Rekonstruirana površina jasno je zakrivljena, čime se potvrđuje da
+ukupnog 3D pomaka. Najveći ukupni pomak u posljednjem analiziranom stanju iznosi
+$0{,}97$\,mm ($19{,}30$\,px). Rekonstruirana površina jasno je zakrivljena, čime se
+potvrđuje da
 mjerenje obuhvaća i izvanravninsku komponentu koju 2D korelacija ne bi mogla razlučiti.
 Polje pomaka mijenja se glatko po površini, bez naglih diskontinuiteta, što upućuje na
 konzistentnost rekonstrukcije; blaga neravnost uz sam rub zone odgovara preostaloj
@@ -19,16 +25,20 @@ konzistentnost rekonstrukcije; blaga neravnost uz sam rub zone odgovara preostal
   \centering
   \includegraphics[width=0.78\textwidth]{disp_magnitude.png}
   \caption{Deformirani 3D oblik mjerne površine obojen iznosom ukupnog pomaka
-  $|\mathbf{U}|$ (mjerne jedinice kalibracije), za posljednje deformacijsko stanje.}
+  $|\mathbf{U}|$ u milimetrima, za posljednje deformacijsko stanje. Sve osi u
+  milimetrima.}
   \label{fig:dispmag}
 \end{figure}
 
 Razlaganje pomaka na komponente (Slika \ref{fig:dispcomp}) daje jasniju fizikalnu
 sliku gibanja. Komponenta $U_x$ (uzduž kraće osi mjerne zone) praktički je
-zanemariva. Ravninsko gibanje gotovo u cijelosti nosi komponenta $U_y$, pozitivna i
-približno jednolika po površini, što odgovara vlačnom razvlačenju uzorka u smjeru
+zanemariva (unutar $\pm 0{,}06$\,mm). Ravninsko gibanje gotovo u cijelosti nosi
+komponenta $U_y$, pozitivna i
+približno jednolika po površini ($0{,}23$ do $0{,}75$\,mm u posljednjem stanju),
+što odgovara vlačnom razvlačenju uzorka u smjeru
 osi $y$ uz pomak mjerne zone kao cjeline. Izvanravninska komponenta $U_z$ posvuda je
-negativna -- cijela se površina tijekom pokusa pomiče prema kamerama odnosno
+negativna ($-0{,}36$ do $-0{,}87$\,mm) -- cijela se površina tijekom pokusa pomiče
+prema kamerama odnosno
 ,,spljošćuje``, s najvećim iznosom na zakrivljenijem dijelu zone. Upravo ta
 kombinacija (usporedivi $U_y$ i $U_z$) čini uzorak reprezentativnim testom stereo
 metode: jednokamerna 2D korelacija interpretirala bi izvanravninski pomak kao lažnu
@@ -38,7 +48,7 @@ ravninsku deformaciju.
   \centering
   \includegraphics[width=\textwidth]{disp_components.png}
   \caption{Komponente 3D pomaka $U_x$, $U_y$ i $U_z$ za posljednje deformacijsko
-  stanje, na zajedničkoj divergentnoj skali (kalibracijske jedinice). Ravninsko
+  stanje, na zajedničkoj divergentnoj skali u milimetrima. Ravninsko
   gibanje dominantno nosi $U_y$, a izvanravninsko $U_z$.}
   \label{fig:dispcomp}
 \end{figure}
@@ -46,16 +56,19 @@ ravninsku deformaciju.
 \subsection{Evolucija pomaka}
 
 Slika \ref{fig:evolution} prikazuje najveći ukupni pomak $|\mathbf{U}|$ i najveću
-izvanravninsku komponentu $|U_z|$ kroz niz frameova. Prvih tridesetak frameova čini
-plato na razini $\approx 0{,}003$ kalibracijskih jedinica: uzorak još nije značajno
+izvanravninsku komponentu $|U_z|$ kroz niz frameova, u milimetrima (lijeva os) i
+pikselima (desna os). Prvih tridesetak frameova čini
+plato na razini $\approx 0{,}04$\,mm ($\approx 0{,}76$\,px): uzorak još nije značajno
 opterećen pa izmjerene vrijednosti predstavljaju efektivnu razinu šuma mjernog
-lanca. Nakon platoa obje krivulje rastu monotono i približno linearno, uz blago
+lanca, konzistentnu s izravno određenom mjernom nesigurnošću (odjeljak
+\ref{ssec:nesigurnost}). Nakon platoa obje krivulje rastu monotono i približno
+linearno, uz blago
 ubrzanje pri kraju pokusa (nagib u završnom dijelu približno $20\,\%$ veći nego u
 sredini pokusa). Vrijedi istaknuti da je prije čišćenja rubnih čvorova krivulja
 pokazivala prividno naglo ubrzanje oko 240.\ framea -- ono se pokazalo artefaktom
 dekorelacije čvorova 110 i 229 (Slika \ref{fig:detekcija}), a ne stvarnim ponašanjem
-uzorka. U posljednjem stanju najveći ukupni pomak iznosi približno $0{,}09$, a
-najveća izvanravninska komponenta $0{,}08$ (u mjernim jedinicama kalibracije) --
+uzorka. U posljednjem stanju najveći ukupni pomak iznosi $0{,}97$\,mm, a
+najveća izvanravninska komponenta $0{,}87$\,mm --
 izvanravninski je pomak dakle gotovo jednak ravninskom, što potvrđuje nužnost stereo
 mjerenja za ovakav uzorak.
 
@@ -63,7 +76,8 @@ mjerenja za ovakav uzorak.
   \centering
   \includegraphics[width=0.80\textwidth]{disp_evolution.png}
   \caption{Evolucija najvećeg ukupnog pomaka $|\mathbf{U}|$ i najveće izvanravninske
-  komponente $|U_z|$ kroz deformacijska stanja.}
+  komponente $|U_z|$ kroz deformacijska stanja, u milimetrima (lijeva os) i
+  pikselima (desna os).}
   \label{fig:evolution}
 \end{figure}
 
@@ -71,7 +85,7 @@ mjerenja za ovakav uzorak.
 
 Slika \ref{fig:strain} prikazuje polje glavne deformacije $E_1$ po površini u
 posljednjem stanju. Tipična (medijalna) vrijednost glavne deformacije iznosi približno
-2\,\% ($1{,}95\,\%$), što je red veličine očekivan za vlačni pokus metalnog uzorka u
+2\,\% ($1{,}95\,\%$), što je red veličine očekivan za vlačni pokus polimernog uzorka u
 elastično-plastičnom području. Deformacija računata po elementu pokazuje razinu šuma
 svojstvenu deriviranju polja pomaka na linearnim trokutastim elementima; skala boja
 stoga je ograničena robusnim 97.\ percentilom ($12{,}04\,\%$). Nakon čišćenja rubnih
@@ -84,14 +98,97 @@ profinjenjem mreže.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.78\textwidth]{strain_E1.png}
-  \caption{Polje glavne (najveće) deformacije $E_1$ na rekonstruiranoj 3D površini.}
+  \caption{Polje glavne (najveće) deformacije $E_1$ na rekonstruiranoj 3D površini.
+  Osi u milimetrima; deformacija je bezdimenzijska.}
   \label{fig:strain}
 \end{figure}
+
+\subsection{Mjerna nesigurnost}
+\label{ssec:nesigurnost}
+
+Mjerna nesigurnost sustava određena je izravno, iz 20 slika neopterećenog uzorka
+snimljenih prije početka pokusa (odjeljak \ref{ssec:postav}). Budući da se uzorak
+između tih slika ne giba, svaki izmjereni pomak predstavlja isključivo šum mjernog
+lanca (senzor kamere, rasvjeta, korelacijski algoritam). Na svih 20 slika
+proveden je isti korelacijski postupak kao u glavnom mjerenju, a standardna
+mjerna nesigurnost pomaka izračunata je kao korijen srednje varijance pomaka
+čvora kroz seriju slika, usrednjeno po svim čvorovima mreže:
+\begin{equation}
+  \sigma_{U} = \sqrt{\overline{\operatorname{var}_t\!\big(U_i(t)\big)}}\,,
+  \label{eq:sigma-u}
+\end{equation}
+gdje je $U_i(t)$ pomak čvora $i$ na slici $t$. Analogno se, deriviranjem tih
+polja, dobiva i nesigurnost deformacija. Rezultati za mjernu mrežu obiju kamera
+sažeti su u Tablici \ref{tab:nesigurnost}.
+
+\begin{table}[H]
+  \centering
+  \caption{Standardna mjerna nesigurnost pomaka i deformacija, određena iz 20
+  slika neopterećenog uzorka (mjerna mreža, medijalna duljina brida elementa
+  $9{,}19$\,px).}
+  \label{tab:nesigurnost}
+  \begin{tabular}{lcc}
+    \toprule
+    & \textbf{Kamera 1} & \textbf{Kamera 2} \\
+    \midrule
+    $\sigma_{U_x}$ [mm] & $1{,}60\cdot10^{-3}$ & $2{,}25\cdot10^{-3}$ \\
+    $\sigma_{U_y}$ [mm] & $2{,}01\cdot10^{-3}$ & $2{,}54\cdot10^{-3}$ \\
+    $\sigma_{U}$ [mm]   & $2{,}57\cdot10^{-3}$ & $3{,}40\cdot10^{-3}$ \\
+    $\sigma_{U}$ [px]   & $0{,}05$             & $0{,}07$             \\
+    \midrule
+    $\sigma_{\varepsilon_{xx}}$ [--] & $2{,}42\cdot10^{-3}$ & $3{,}30\cdot10^{-3}$ \\
+    $\sigma_{\varepsilon_{yy}}$ [--] & $5{,}21\cdot10^{-3}$ & $6{,}06\cdot10^{-3}$ \\
+    $\sigma_{\gamma_{xy}}$ [--]      & $4{,}97\cdot10^{-3}$ & $6{,}39\cdot10^{-3}$ \\
+    $\sigma_{\varepsilon_{1}}$ [--]  & $5{,}24\cdot10^{-3}$ & $6{,}25\cdot10^{-3}$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Standardna nesigurnost 2D pomaka iznosi dakle $2{,}57\cdot10^{-3}$\,mm
+($0{,}05$\,px) za kameru 1, odnosno $3{,}40\cdot10^{-3}$\,mm ($0{,}07$\,px) za
+kameru 2 -- subpikselna razlučivost tipična za dobro pripremljenu teksturu.
+Nesigurnost deformacija reda je veličine $10^{-3}$, što treba imati na umu pri
+tumačenju polja $E_1$: lokalne varijacije manje od $\approx 0{,}5$\,\% unutar su
+šuma. Nešto veća nesigurnost kamere 2 posljedica je njezina kosijeg pogleda na
+mjernu zonu (perspektivno skraćenje smanjuje efektivnu gustoću teksture po
+elementu), a razlika $\sigma_{U_y} > \sigma_{U_x}$ odražava izduženost mjerne
+zone i anizotropiju teksture.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.49\textwidth]{unc_sigma_u.png}
+  \includegraphics[width=0.49\textwidth]{unc_sigma_eps.png}
+  \caption{Mjerna nesigurnost u ovisnosti o veličini elementa mreže (log--log
+  prikaz, kamera 1): standardna nesigurnost pomaka $\sigma_U$ u milimetrima
+  (lijevo) i deformacija $\sigma_\varepsilon$ (desno).}
+  \label{fig:nesigurnost}
+\end{figure}
+
+Uz mjernu mrežu, ista je analiza ponovljena za niz mreža različitih veličina
+elemenata generiranih nad istim područjem interesa (Slika \ref{fig:nesigurnost}).
+Vidljiv je klasičan kompromis prostorne razlučivosti i šuma: smanjenjem elementa
+ispod $\approx 7$\,px nesigurnost naglo raste ($\sigma_U = 9{,}34\cdot10^{-3}$\,mm
+pri $\ell \approx 5{,}35$\,px), jer premali elementi obuhvaćaju premalo teksture,
+a mreža s $\ell \approx 4{,}5$\,px više uopće ne konvergira. Povećanjem elementa
+iznad $\approx 10$\,px nesigurnost se ustaljuje na $\approx 2{,}15\cdot10^{-3}$\,mm
+za pomake, odnosno $\approx 3{,}2\cdot10^{-3}$ za $\varepsilon_1$. Odabrana
+veličina elementa mjerne mreže ($\approx 9$--$10$\,px) nalazi se upravo na
+,,koljenu`` krivulje: daljnje profinjenje višestruko bi povećalo šum, a
+progrubljenje bi žrtvovalo prostornu razlučivost bez bitnog dobitka na točnosti.
+
+Razina šuma 3D rekonstrukcije konzistentna je s tim vrijednostima: plato krivulje
+evolucije ($\approx 0{,}04$\,mm, Slika \ref{fig:evolution}) predstavlja
+\emph{maksimum} iznosa 3D pomaka po svih 252 čvora, a pri malom kutu konvergencije
+kamera ($9{,}32^\circ$) pogreška 2D korelacije pri triangulaciji se u
+izvanravninskom smjeru pojačava približno faktorom
+$1/\!\left[2\sin(\theta/2)\right] \approx 6$ -- dakle $0{,}05$\,px 2D nesigurnosti
+odgovara upravo izmjerenoj razini šuma 3D pomaka.
 
 \subsection{Procjena točnosti}
 \label{ssec:tocnost}
 
-Točnost sustava ocijenjena je posredno, kroz tri neovisna pokazatelja. Prvo,
+Uz izravno određenu mjernu nesigurnost, točnost sustava ocijenjena je i posredno,
+kroz tri neovisna pokazatelja. Prvo,
 rekonstrukcija referentnog oblika podudara se sa zadanom mrežom do strojne
 preciznosti ($\sim 10^{-15}$), čime je isključena sustavna pogreška triangulacije.
 Drugo, srednja reprojekcijska pogreška trianguliranih deformiranih točaka iznosi
@@ -99,8 +196,8 @@ približno $0{,}15$ piksela (medijan $0{,}13$ px, najveća $1{,}10$ px) -- budu�
 veličina objedinjuje pogrešku korelacije, kalibracije i triangulacije, subpikselna
 vrijednost potvrđuje visoku ukupnu točnost mjerenja i u razini je vrijednosti koje
 se u literaturi navode za dobro kalibrirane stereo-DIC sustave. Treće, plato
-krivulje evolucije u neopterećenom dijelu pokusa daje procjenu šuma pomaka od
-$\approx 0{,}003$ kalibracijskih jedinica.
+krivulje evolucije u neopterećenom dijelu pokusa ($\approx 0{,}04$\,mm) u skladu je
+s izravno izmjerenom mjernom nesigurnošću iz odjeljka \ref{ssec:nesigurnost}.
 
 Lokalizirani gubitak korelacije na tri rubna čvora kamere 2, koji je prije čišćenja
 bio dominantan izvor pogreške (reprojekcija do $6{,}25$ px, nefizikalni ekstremi

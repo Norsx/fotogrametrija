@@ -6,19 +6,33 @@ Primijenjen je pristup koji spaja globalnu 2D korelaciju konačnih elemenata po 
 kameri sa stereo triangulacijom čvorova mreže, čime je uz minimalnu količinu novoga
 koda ostvarena potpuna 3D rekonstrukcija.
 
-Sustav je uspješno primijenjen na stvarni vlačni pokus s 300 deformacijskih stanja.
-Rekonstruirana su glatka polja trodimenzijskih pomaka, jasno obuhvaćajući i ravninske
-i izvanravninske komponente (izvanravninski pomak gotovo je jednak ravninskom), te
-pripadna polja površinskih deformacija s medijalnom glavnom deformacijom od približno
-2\,\%. Ispravnost implementacije potvrđena je rekonstrukcijom referentnog oblika do
+Sustav je uspješno primijenjen na stvarni vlačni pokus 3D tiskane polimerne
+epruvete s 300 deformacijskih stanja. Svi su rezultati, uz pomoć mjerila slike od
+$0{,}0502$\,mm/px i iz njega izvedenog mjerila prostora, izraženi u fizikalnim
+jedinicama. Rekonstruirana su glatka polja trodimenzijskih pomaka, jasno
+obuhvaćajući i ravninske
+i izvanravninske komponente: u posljednjem stanju najveći ukupni pomak iznosi
+$0{,}97$\,mm, a najveća izvanravninska komponenta $0{,}87$\,mm -- izvanravninski
+pomak gotovo je jednak ravninskom. Pripadna polja površinskih deformacija pokazuju
+medijalnu glavnu deformaciju od približno 2\,\%.
+
+Mjerna nesigurnost sustava određena je izravno iz 20 slika neopterećenog uzorka:
+standardna nesigurnost pomaka iznosi $2{,}57\cdot10^{-3}$\,mm ($0{,}05$\,px) za
+kameru 1, odnosno $3{,}40\cdot10^{-3}$\,mm ($0{,}07$\,px) za kameru 2, uz
+nesigurnost deformacija reda veličine $10^{-3}$; analiza ovisnosti nesigurnosti
+o veličini elementa potvrdila je da je odabrana mreža ($\approx 10$\,px) povoljan
+kompromis razlučivosti i šuma. Ispravnost implementacije potvrđena je
+rekonstrukcijom referentnog oblika do
 strojne preciznosti i subpikselnom reprojekcijskom pogreškom ($\sim 0{,}15$ piksela).
 Lokalizirani gubitak korelacije na tri rubna čvora jedne kamere automatski je
 detektiran usporedbom sa susjednim čvorovima i saniran robusnim medijalnim filtrom,
 bez utjecaja na ostatak mjernog polja i bez izmjena mjernih algoritama.
 
-Time su ispunjeni svi ciljevi zadatka: postavljen je stereovizijski model, provedena
+Time su ispunjeni svi ciljevi zadatka: postavljen je stereovizijski model
+(kalibriran ChArUco pločom), provedena
 korelacija između referentnih i deformiranih slika, izračunati 3D pomaci i
-deformacije te vizualizirano deformirano stanje. Mogući smjerovi daljnjeg rada
+deformacije u stvarnim jedinicama, određena mjerna nesigurnost te vizualizirano
+deformirano stanje. Mogući smjerovi daljnjeg rada
 uključuju zaglađivanje polja deformacija ekstrapolacijom u čvorove, profinjenje mreže
-uz rub mjerne zone te pretvorbu rezultata u fizičke jedinice pomoću mjerila
-kalibracije.
+uz rub mjerne zone te inkrementalnu strategiju korelacije (ažuriranje referentne
+slike) kojom bi se analiza proširila i na preostala deformacijska stanja do loma.
