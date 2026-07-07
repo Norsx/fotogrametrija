@@ -61,10 +61,22 @@ valjanost matrica $\mathsf{P}_1$ i $\mathsf{P}_2$.
   \caption{Postav tijekom kalibracije: ravninska šahovnička meta u mjernom volumenu
   kidalice i dvije kamere stereovizijskog sustava na stativima.}
   \label{fig:kalibpostav}
-\end{figure} Ispravnost kalibracije provjerena je projiciranjem čvorova 3D
-mreže u obje kamere prema \eqref{eq:projection}; kao što pokazuje Slika
-\ref{fig:overlay}, projicirana mreža precizno prekriva teksturiranu mjernu zonu u obje
-slike, čime je potvrđena geometrijska konzistentnost sustava.
+\end{figure}
+
+Ispravnost kalibracije provjerena je projiciranjem čvorova 3D mreže u obje kamere
+prema \eqref{eq:projection}; kao što pokazuje Slika \ref{fig:overlay}, projicirana
+mreža precizno prekriva teksturiranu mjernu zonu u obje slike, čime je potvrđena
+geometrijska konzistentnost sustava.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.49\textwidth]{overlay_cam1.png}
+  \includegraphics[width=0.49\textwidth]{overlay_cam2.png}
+  \caption{Provjera kalibracije: 3D mreža projicirana matricama $\mathsf{P}_1$ (kamera
+  1, lijevo) i $\mathsf{P}_2$ (kamera 2, desno) na referentnu sliku. Mreža prekriva
+  teksturiranu mjernu zonu epruvete.}
+  \label{fig:overlay}
+\end{figure}
 
 Referentni oblik mjerne površine opisan mrežom $\mathsf{M}$ prikazan je na Slici
 \ref{fig:meshref}. Površina je izrazito zakrivljena u smjeru osi $y$ (raspon
@@ -82,16 +94,6 @@ stabilnosti korelacije i kasnijeg računanja deformacija.
   $\mathsf{M}$ (252 čvora, 438 trokutastih elemenata) dobivena kalibracijom sustava,
   u kalibracijskim jedinicama.}
   \label{fig:meshref}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.49\textwidth]{overlay_cam1.png}
-  \includegraphics[width=0.49\textwidth]{overlay_cam2.png}
-  \caption{Provjera kalibracije: 3D mreža projicirana matricama $\mathsf{P}_1$ (kamera
-  1, lijevo) i $\mathsf{P}_2$ (kamera 2, desno) na referentnu sliku. Mreža prekriva
-  teksturiranu mjernu zonu epruvete.}
-  \label{fig:overlay}
 \end{figure}
 
 \subsection{Postupak mjerenja}

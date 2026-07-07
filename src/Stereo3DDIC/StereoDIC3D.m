@@ -92,22 +92,22 @@ if opt.plot
     f1 = figure('Visible','off','Position',[100 100 900 700]);
     trisurf(conn, Xd(:,1),Xd(:,2),Xd(:,3), vecnorm(Ud,2,2), 'EdgeColor','none');
     axis equal tight; colorbar; colormap turbo; view(3);
-    title('3D displacement magnitude — deformed shape');
+    title('Iznos 3D pomaka |U| — deformirani oblik'); xlabel x; ylabel y; zlabel z;
     exportgraphics(f1, fullfile(outDir,'disp_magnitude.png'),'Resolution',150);
 
     f2 = figure('Visible','off','Position',[100 100 900 700]);
     patch('Faces',conn,'Vertices',Xref,'FaceVertexCData',Eprin(:,1), ...
           'FaceColor','flat','EdgeColor','none');
     axis equal tight; colorbar; colormap turbo; view(3);
-    clim([0 prctile(Eprin(:,1),97)]);          % robust range (ignore sliver-edge outliers)
-    title('Major principal strain E_1'); xlabel x; ylabel y; zlabel z;
+    clim([0 prctile(Eprin(:,1),97)]);          % robust range (edge-noise outliers)
+    title('Glavna deformacija E_1'); xlabel x; ylabel y; zlabel z;
     exportgraphics(f2, fullfile(outDir,'strain_E1.png'),'Resolution',150);
 
     f3 = figure('Visible','off','Position',[100 100 900 500]);
     plot(frames,Umax,'LineWidth',1.5); hold on; plot(frames,Uzmax,'LineWidth',1.5);
-    grid on; xlabel('Frame'); ylabel('Displacement');
-    legend('max |U|','max |U_z| (out-of-plane)','Location','northwest');
-    title('Displacement evolution');
+    grid on; xlabel('Frame'); ylabel('Pomak (kalibracijske jedinice)');
+    legend('max |U|','max |U_z| (izvanravninski)','Location','northwest');
+    title('Evolucija pomaka');
     exportgraphics(f3, fullfile(outDir,'disp_evolution.png'),'Resolution',150);
     close([f1 f2 f3]);
 end

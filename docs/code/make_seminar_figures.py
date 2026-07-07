@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 ROOT = r"C:/Users/ivann/Desktop/fotogrametrija"
-RESULTS = "data/processed/stereo_07072026_012442/stereo3d_results.mat"
+RESULTS = "data/processed/stereo_07072026_015551/stereo3d_results.mat"
 ts = datetime.datetime.now().strftime("%d%m%Y_%H%M%S")
 OUT = os.path.join(ROOT, "data", "processed", f"stereo_figs_{ts}")
 os.makedirs(OUT, exist_ok=True)
