@@ -1,35 +1,40 @@
-\section{Teorijska podloga}
+\section{Teorijska osnova}
 \label{sec:teorija}
 
 \subsection{Korelacija digitalne slike}
 
-Korelacija digitalne slike temelji se na praćenju nasumičnog uzorka sivih razina
-(engl. \textit{speckle pattern}) nanesenog na površinu uzorka. Neka je $f(\mathbf{x})$
-razina sivila referentne slike u pikselu $\mathbf{x}=(x,y)$, a $g(\mathbf{x})$ razina
-deformirane slike. Uz pretpostavku očuvanja intenziteta, materijalna točka koja se u
+Metoda korelacije digitalne slike temelji se na praćenju pomaka
+nasumičnog kontrastnog uzorka (engl. speckle pattern),
+koji se prije mjerenja nanosi na površinu uzorka, kroz niz slika
+snimljenih tijekom deformacije.
+Ako je $f(\mathbf{x})$
+intenzitet referentne slike u pikselu $\mathbf{x}=(x,y)$,
+a $g(\mathbf{x})$ razina
+deformirane slike, uz pretpostavku očuvanja intenziteta,
+materijalna točka koja se u
 referentnom stanju nalazi u $\mathbf{x}$ pomiče se u deformiranom stanju u
-$\mathbf{x}+\mathbf{u}(\mathbf{x})$, pa vrijedi
+$\mathbf{x}+\mathbf{u}(\mathbf{x})$. Tada vrijedi:
 \begin{equation}
   f(\mathbf{x}) = g\big(\mathbf{x}+\mathbf{u}(\mathbf{x})\big).
   \label{eq:opt-flow}
 \end{equation}
-Polje pomaka $\mathbf{u}$ određuje se minimizacijom kvadratnog reziduala sivih razina
+Polje pomaka $\mathbf{u}$ određuje se minimizacijom kvadratnog reziduala intenziteta piksela:
 \begin{equation}
   \boldsymbol{\Phi}^2 = \sum_{\mathbf{x}\in\text{ROI}}
   \big[ f(\mathbf{x}) - g(\mathbf{x}+\mathbf{u}(\mathbf{x})) \big]^2 .
   \label{eq:dic-functional}
 \end{equation}
-U \emph{globalnom} pristupu korelacije, korištenom u ovom radu, polje pomaka
-diskretizira se mrežom konačnih elemenata; pomak unutar elementa interpolira se
+U globalnom pristupu korelacije, korištenom u ovom radu, polje pomaka
+diskretizira se mrežom konačnih elemenata, dakle pomak unutar elementa interpolira se
 funkcijama oblika $N_i$ iz čvornih vrijednosti $\mathbf{u}_i$:
 $\mathbf{u}(\mathbf{x})=\sum_i N_i(\mathbf{x})\,\mathbf{u}_i$. Minimizacija
-\eqref{eq:dic-functional} vodi na linearizirani (Gauss--Newtonov) sustav koji se
-iterativno rješava \cite{sutton2009,hild2006}.
+\eqref{eq:dic-functional} tada vodi na linearizirani (Gauss-Newtonov) sustav koji se
+rješava iterativno \cite{sutton2009}\cite{hild2006}.
 
 \subsection{Model kamere i projekcijska matrica}
 
-Projekcija točke prostora na ravninu senzora opisuje se modelom rupičaste kamere
-(engl. \textit{pinhole}). Točka $\mathbf{X}=(X,Y,Z)$ u svjetskom koordinatnom sustavu
+Projekcija točke prostora na ravninu senzora opisuje se tzv. \textit{pinhole} modelom.
+Točka $\mathbf{X}=(X,Y,Z)$ u globalnom koordinatnom sustavu
 preslikava se u piksel $\mathbf{x}=(x,y)$ preko projekcijske matrice
 $\mathsf{P}\in\mathbb{R}^{3\times4}$ u homogenim koordinatama:
 \begin{equation}
@@ -39,16 +44,26 @@ $\mathsf{P}\in\mathbb{R}^{3\times4}$ u homogenim koordinatama:
   \mathsf{P} = \mathsf{K}\,[\,\mathsf{R}\ |\ \mathbf{t}\,],
   \label{eq:projection}
 \end{equation}
-gdje je $s$ skalirni faktor, $\mathsf{K}$ matrica unutarnjih parametara (žarišna
-duljina, glavna točka), a $[\mathsf{R}\,|\,\mathbf{t}]$ vanjski parametri (rotacija i
-translacija kamere). Kalibracijom stereovizijskog sustava odrede se projekcijske
-matrice obiju kamera, $\mathsf{P}_1$ i $\mathsf{P}_2$; u ovom radu one su zadane kao
-ulazni podatak.
+gdje je $s$ skalirni faktor, a $[\mathsf{R}\,|\,\mathbf{t}]$ označava matricu vanjskih (ekstriničnih) parametara kamere koja opisuje rotaciju $\mathsf{R}$ i translaciju $\mathbf{t}$ iz globalnog u koordinatni sustav kamere.
+
+Matrica $\mathsf{K}\in\mathbb{R}^{3\times3}$ predstavlja matricu unutarnjih (intrinzičnih)
+parametara kamere, definira se kao:
+\begin{equation}
+  \mathsf{K} = \begin{bmatrix} f_x & \alpha & c_x \\ 0 & f_y & c_y \\ 0 & 0 & 1 \end{bmatrix},
+  \label{eq:intrinsic-matrix}
+\end{equation}
+gdje su:
+\begin{itemize}
+  \item $f_x$ i $f_y$ žarišne duljine kamere izražene u pikselima duž horizontalne ($x$) i vertikalne ($y$) osi slikovne ravnine,
+  \item $c_x$ i $c_y$ koordinate glavne točke (engl. \textit{principal point}), koja predstavlja sjecište optičke osi kamere i ravnine senzora,
+  \item $\alpha$ koeficijent iskošenosti (engl. \textit{skew coefficient}), koji opisuje odstupanje od okomitosti između osi piksela na senzoru (za moderne senzore ova se vrijednost uzima kao nula).
+\end{itemize}
+Kalibracijom stereovizijskog sustava određuju se projekcijske matrice obiju kamera, $\mathsf{P}_1$ i $\mathsf{P}_2$.
 
 \subsection{Stereo triangulacija}
 
 Ako je poznat piksel $\mathbf{x}_1$ u prvoj i pripadni piksel $\mathbf{x}_2$ u drugoj
-kameri, trodimenzijska točka $\mathbf{X}$ rekonstruira se \emph{triangulacijom}. Iz
+kameri, trodimenzijska točka $\mathbf{X}$ rekonstruira se metodom triangulacije. Iz
 \eqref{eq:projection} za svaku kameru vrijedi $\mathbf{x}_c \times (\mathsf{P}_c
 \tilde{\mathbf{X}})=\mathbf{0}$, što daje po dvije linearne jednadžbe. Slaganjem
 jednadžbi obiju kamera dobiva se homogeni sustav
@@ -72,7 +87,7 @@ najmanjoj singularnoj vrijednosti (metoda \textit{Direct Linear Transformation},
 
 Iz trodimenzijskog polja pomaka određuju se deformacije. Za svaki trokutasti element
 konstruira se lokalni ortonormirani tangencijalni sustav, u kojem se računa gradijent
-deformiranja $\mathsf{F}$ te Green--Lagrangeov tenzor deformacije
+deformiranja $\mathsf{F}$ te Green-Lagrangeov tenzor deformacije
 \begin{equation}
   \mathsf{E} = \tfrac{1}{2}\big(\mathsf{F}^{\mathsf{T}}\mathsf{F} - \mathsf{I}\big).
   \label{eq:green-lagrange}

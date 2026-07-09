@@ -1,20 +1,20 @@
 \section{Uvod}
 
 Mjerenje pomaka i deformacija na površini opterećenih konstrukcijskih elemenata
-temeljni je zadatak eksperimentalne mehanike. Klasične mjerne metode, poput
-tenzometarskih traka, daju informaciju samo u pojedinačnim točkama i zahtijevaju
-fizički kontakt s uzorkom. Optičke, bezkontaktne metode -- prije svega
-\emph{korelacija digitalne slike} (engl. \textit{Digital Image Correlation}, DIC)
--- omogućuju mjerenje cijelog polja pomaka i deformacija na površini uzorka bez
+temeljni je zadatak eksperimentalne mehanike. Dok klasične mjerne metode poput
+tenzometarskih traka daju informaciju samo u pojedinačnim točkama i zahtijevaju
+fizički kontakt s uzorkom, optičke, beskontaktne metode poput korelacije digitalne
+slike (engl. \textit{Digital Image Correlation}, DIC)
+omogućuju mjerenje cijelog polja pomaka i deformacija na površini uzorka bez
 kontakta, uz visoku prostornu razlučivost.
 
 Dvodimenzijska (2D) korelacija digitalne slike koristi jednu kameru i pretpostavlja
-da se gibanje odvija u ravnini paralelnoj s ravninom senzora. Ta pretpostavka
-narušava se čim se pojavi izvanravninski pomak: površina koja se približava ili
+da se gibanje odvija u ravnini paralelnoj s ravninom senzora, no ta se pretpostavka
+narušava čim se pojavi izvanravninski pomak, odnosno površina koja se približava ili
 udaljava od kamere, savija ili rotira, unosi prividnu deformaciju koju 2D metoda
-ne može razlučiti od stvarne. \emph{Stereo korelacija digitalne slike}
-(stereo-DIC ili 3D-DIC) rješava taj problem korištenjem dviju kalibriranih kamera:
-kombinacijom stereovizije i korelacije rekonstruira se \emph{trodimenzijsko} polje
+ne može razlučiti od stvarne. Stereo korelacija digitalne slike
+(stereo-DIC ili 3D-DIC) rješava taj problem korištenjem dviju kalibriranih kamera.
+Kombinacijom stereovizije i korelacije rekonstruira se trodimenzijsko polje
 pomaka, uključujući i ravninske i izvanravninske komponente.
 
 \subsection{Cilj rada}
@@ -23,18 +23,19 @@ Cilj ovog seminarskog rada jest razviti funkcionalan sustav za mjerenje
 trodimenzijskih pomaka i deformacija površine objekta pomoću stereo korelacije
 digitalne slike, u skladu s postavljenim zadatkom. Konkretno, potrebno je:
 \begin{itemize}
-  \item postaviti i kalibrirati stereovizijski sustav (dvije kamere);
-  \item provesti korelaciju referentne i deformiranih slika za svaku kameru;
-  \item rekonstruirati trodimenzijske pomake točaka na površini uzorka;
-  \item odrediti pripadno polje deformacija te vizualizirati deformirano stanje.
+  \item postaviti i kalibrirati stereovizijski sustav (dvije kamere)
+  \item provesti korelaciju referentne i deformiranih slika za svaku kameru
+  \item rekonstruirati trodimenzijske pomake točaka na površini uzorka
+  \item odrediti pripadno polje deformacija te vizualizirati deformirano stanje
 \end{itemize}
 
 \subsection{Struktura rada}
 
-U poglavlju \ref{sec:teorija} iznesena je teorijska podloga: princip korelacije,
-model kamere i projekcijske matrice, stereo triangulacija te računanje površinskih
+U poglavlju \ref{sec:teorija} iznesena je teorijska podloga, koja uključuje
+princip korelacije,
+model kamere i projekcijske matrice, stereo triangulaciju te računanje površinskih
 deformacija. Poglavlje
 \ref{sec:metoda} opisuje primijenjenu metodologiju i eksperimentalni postav, a
 poglavlje \ref{sec:implementacija} programsku implementaciju u MATLAB-u.
-Rezultati mjerenja na stvarnom vlačnom pokusu prikazani su i raspravljeni u
-poglavlju \ref{sec:rezultati}, nakon čega slijedi zaključak.
+Rezultati mjerenja na stvarnom vlačnom eksperimentu prikazani su i raspravljeni u
+poglavlju \ref{sec:rezultati}, a rad se zaključuje sažetkom glavnih spoznaja i zaključaka.

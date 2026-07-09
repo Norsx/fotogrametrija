@@ -4,18 +4,18 @@
 \subsection{Eksperimentalni postav i uzorak}
 \label{ssec:postav}
 
-Eksperimentalni postav prikazan je na Slici \ref{fig:postav}. Vlačni pokus proveden
-je na statičkoj kidalici Messphysik BETA 50-5, u čije je čeljusti prihvaćena vlačna
+Statički vlačni eksperiment
+proveden je na kidalici Messphysik BETA 50-5, u čije je čeljusti prihvaćena vlačna
 epruveta s reduciranim mjernim presjekom. Uzorak je izrađen 3D tiskom polimera
-(PLA, postupak taložnog srašćivanja -- FDM); njegova je geometrija prikazana na
+(TPU, postupak taložnog srašćivanja -- FDM), a njegova je geometrija prikazana na
 Slici \ref{fig:geometrija}. Ukupna duljina epruvete iznosi 160\,mm, širina
 zahvatnih krajeva 30\,mm, a reducirani mjerni presjek širine 18\,mm i paralelne
 duljine 70\,mm prelazi u krajeve radijusom $R\,25$\,mm. Debljina stijenke iznosi
-3\,mm, no epruveta nije ravna ploča: duž središnjih 58\,mm duljine mjerna je
+3\,mm, no epruveta nije ravna ploča, već je duž središnjih 58\,mm duljine mjerna
 površina izvedena kao izvanravninski luk radijusa $R\,31$\,mm (s prijelaznim
-radijusima $R\,5$ i $R\,4$\,mm). Upravo ta namjerno zakrivljena geometrija čini
-uzorak reprezentativnim testom stereo metode: pri vlačnom opterećenju luk se
-istodobno rasteže u ravnini i spljošćuje prema kamerama, pa mjerenje nužno mora
+radijusima $R\,5$ i $R\,4$\,mm). Upravo takva namjerno zakrivljena geometrija čini
+uzorak reprezentativnim testom stereo metode budući da se pri vlačnom opterećenju luk
+istodobno rasteže u ravnini i spljošćuje (izravnava) udaljavajući se od kamera, pa mjerenje nužno mora
 obuhvatiti i izvanravninsku komponentu pomaka.
 
 \begin{figure}[H]
@@ -27,6 +27,10 @@ obuhvatiti i izvanravninsku komponentu pomaka.
   \label{fig:geometrija}
 \end{figure}
 
+Eksperimentalni postav prikazan je na Slici \ref{fig:postav}.
+Ispred kidalice postavljen je stereovizijski mjerni sustav s dvjema kamerama na
+neovisnim stativima, usmjerenima prema mjernoj zoni pod međusobnim kutom.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.62\textwidth]{postav_eksperiment.png}
@@ -35,46 +39,42 @@ obuhvatiti i izvanravninsku komponentu pomaka.
   \label{fig:postav}
 \end{figure}
 
-Ispred kidalice postavljen je stereovizijski mjerni sustav: dvije kamere na
-neovisnim stativima, usmjerene prema mjernoj zoni pod međusobnim kutom. Geometrija
-stereo para određena je iz kalibracijskih projekcijskih matrica (odjeljak
-\ref{ssec:kalibracija}): optički centri kamera nalaze se u točkama
+Geometrija stereo para određena je iz kalibracijskih projekcijskih matrica.
+Optički centri kamera nalaze se u točkama
 $\mathbf{C}_1 = [-3{,}45;\ 1{,}62;\ 11{,}55]$ i
 $\mathbf{C}_2 = [2{,}15;\ 1{,}43;\ 9{,}65]$ kalibracijskog koordinatnog sustava,
-pa baza (razmak kamera) iznosi $5{,}91$ kalibracijskih jedinica, odnosno približno
-$64{,}75$\,mm (mjerilo prostora izvedeno je u odjeljku \ref{ssec:postupak}), dok
+pa razmak kamera iznosi $5{,}91$ kalibracijskih jedinica, odnosno približno
+$64{,}75$\,mm (mjerilo prostora izvedeno je u poglavlju \ref{ssec:postupak}), dok
 kut konvergencije optičkih osi iznosi $9{,}32^\circ$.
 
 Mjerna zona epruvete prethodno je pripremljena nanošenjem nasumične crno-bijele
-teksture nužne za korelaciju: budući da je polimerni uzorak izvorno crn, mjerna je
+teksture nužne za korelaciju. Budući da je polimerni uzorak izvorno crn, mjerna je
 površina najprije raspršivačem boje obojana u bijelo, a zatim su, također
 raspršivačem, nanesene nasumične crne mrlje (engl.\ \textit{speckle pattern}).
-Pokus je proveden uz predopterećenje od 3\,N i konstantnu brzinu razmicanja
-čeljusti od 1\,mm/min. Prije početka opterećivanja snimljeno je 20 slika
-neopterećenog uzorka radi određivanja mjerne nesigurnosti sustava (odjeljak
-\ref{ssec:nesigurnost}). Tijekom pokusa obje su kamere snimile po 1188 vremenski
+Eksperiment je proveden uz predopterećenje od 3\,N i konstantnu brzinu razmicanja
+čeljusti od 1\,mm/min, a prije početka opterećivanja snimljeno je 20 slika
+neopterećenog uzorka radi određivanja mjerne nesigurnosti sustava.
+Tijekom eksperimenta obje su kamere snimile po 1188 vremenski
 usklađenih slika, od kojih prva odgovara nedeformiranom (referentnom) stanju, a
 ostale rastućim razinama deformacije.
 
-U ovom je radu analizirano prvih 300 deformacijskih stanja. Taj izbor obuhvaća
-cijelo elastično i početno elastično-plastično područje odziva uzorka, a ujedno
-jamči pouzdanu konvergenciju korelacije: svi se pomaci računaju izravno prema
+Analizirano je prvih 300 deformacijskih stanja, što obuhvaća
+cijelo elastično i početno elastično-plastično područje ponašanja uzorka, a ujedno
+omogućuje pouzdanu konvergenciju korelacije. Svi se pomaci računaju izravno prema
 referentnoj slici, pa s rastućom deformacijom lokalna promjena teksture postupno
-degradira korelaciju -- već se pri kraju analiziranog raspona javlja dekorelacija
-pojedinačnih rubnih čvorova (Poglavlje \ref{sec:implementacija}). Za stanja nakon
-300.\ slike bila bi potrebna inkrementalna strategija s ažuriranjem referentne
+degradira korelaciju. Za stanja nakon
+300-te slike bila bi potrebna inkrementalna strategija s ažuriranjem referentne
 slike, što nadilazi opseg ovoga rada.
 
 Slika \ref{fig:speckle} prikazuje mjernu zonu snimljenu objema kamerama u
 referentnom i u posljednjem analiziranom stanju, s ucrtanom projiciranom mjernom
 mrežom. Nasumična tekstura daje svakom dijelu
-površine jedinstven svjetlosni ,,potpis`` po kojem ga korelacijski algoritam može
+površine jedinstven izgled po kojem ga korelacijski algoritam može
 pratiti kroz slijed slika. Čvorovi mreže definiraju točke u kojima se pomak mjeri, a
 između njih se polje pomaka interpolira po elementima. U referentnom stanju mreža
-odgovara projekciji 3D mreže mjerne površine $\mathsf{M}$ (usporedi Sliku
-\ref{fig:overlay}), dok u
-deformiranom stanju čvorovi zauzimaju položaje izmjerene 2D korelacijom (nakon
-čišćenja rubnih čvorova, Poglavlje \ref{sec:implementacija}) -- mreža vidljivo prati
+odgovara projekciji 3D mreže mjerne površine $\mathsf{M}$, dok u
+deformiranom stanju čvorovi zauzimaju položaje izmjerene 2D korelacijom. Mreža
+vidljivo prati
 pomak i promjenu oblika mjerne zone u objema kamerama, što je upravo informacija koju
 stereo triangulacija potom prevodi u trodimenzijske pomake.
 
@@ -90,40 +90,48 @@ stereo triangulacija potom prevodi u trodimenzijske pomake.
 \subsection{Kalibracija i geometrijski model}
 \label{ssec:kalibracija}
 
-Stereovizijski sustav kalibriran je unaprijed. Postav tijekom kalibracije prikazan
-je na Slici \ref{fig:kalibpostav}: umjesto epruvete, u mjerni volumen između
+Stereovizijski sustav kalibriran je prije izvođenja samog eksperimenta.
+Postav tijekom kalibracije prikazan
+je na Slici \ref{fig:kalibpostav}. Kamere su postavljene
+na iste pozicije kao i kod samog eksperimenta, a umjesto epruvete,
+u mjernu zonu između
 čeljusti kidalice postavljena je ravninska kalibracijska ChArUco ploča, koju obje
-učvršćene kamere istodobno snimaju. ChArUco meta kombinira klasični šahovnički
+učvršćene kamere istodobno snimaju. ChArUco ploča kombinira klasični šahovnički
 uzorak s ArUco markerima umetnutima u svijetla polja šahovnice. Korištena je ploča
-sa $7\times7$ polja veličine 25\,mm, s markerima veličine 13\,mm iz rječnika
-\texttt{DICT\_4X4\_1000} (identifikatori markera od 0 naviše, ishodišno polje
-crno). U odnosu na klasičnu šahovničku metu, ChArUco ploča ima dvije ključne
+sa $7\times7$ polja veličine 25\,mm, s markerima veličine 13\,mm iz kategorije
+\texttt{DICT\_4X4\_1000}. U odnosu na klasičnu šahovničku ploču,
+ChArUco ploča ima dvije ključne
 prednosti. Prvo, svaki ArUco marker nosi jedinstveni binarni kod, pa je svaki kut
-šahovnice jednoznačno identificiran: kalibracija je moguća i kada je meta
-djelomično zaklonjena ili djelomično izvan vidnog polja (klasična šahovnica mora
+šahovnice jednoznačno identificiran, dakle kalibracija je moguća i kada je meta
+djelomično zaklonjena ili izvan vidnog polja (klasična šahovnica mora
 biti vidljiva u cijelosti), što je osobito važno u skučenom mjernom volumenu
 između čeljusti kidalice. Drugo, jedinstveno kodiranje polja uklanja prostornu
-višeznačnost mete: klasična je šahovnica invarijantna na zakret za $180^\circ$, pa
-joj se orijentacija može pogrešno pridružiti, dok je orijentacija ChArUco ploče
-jednoznačno određena kodovima markera. Iz snimaka mete određene su projekcijske
-matrice obiju kamera $\mathsf{P}_1$ i $\mathsf{P}_2$ -- one su jedini rezultat
-kalibracijskog koraka koji ulazi u daljnju obradu; diskretizacija mjerne površine
-od kalibracije je neovisna (odjeljak \ref{ssec:postupak}). Nakon kalibracije
-položaji kamera i optike ostaju nepromijenjeni do kraja pokusa, jer bi svaka
-promjena geometrije poništila valjanost matrica $\mathsf{P}_1$ i $\mathsf{P}_2$.
+višeznačnost mete. Klasična šahovnica je invarijantna na zakret za $180^\circ$, pa
+joj se orijentacija može pogrešno odrediti, dok je orijentacija ChArUco ploče
+jednoznačno određena kodovima markera. Iz istodobno snimljenih slika ploče
+s objema kamerama proveden je postupak stereo kalibracije, kojim  se,
+uz intrinzične parametre pojedinih kamera, određuje i njihova relativna
+orijentacija i međusobni položaj u prostoru, odnosno ekstrinični parametri
+(rotacija i translacija). Na taj se način projekcijske matrice
+$\mathsf{P}_1$ i $\mathsf{P}_2$ definiraju u zajedničkom trodimenzijskom
+koordinatnom sustavu, što je nužan preduvjet za triangulaciju. Dobivene
+projekcijske matrice obiju kamera jedini su rezultat kalibracijskog koraka
+koji ulazi u daljnju obradu. Nakon kalibracije položaji kamera i optike ostaju
+nepromijenjeni do kraja eksperimenta budući da bi svaka promjena geometrije
+poništila valjanost dobivenih matrica.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.62\textwidth]{postav_kalibracija.png}
   \caption{Postav tijekom kalibracije: ravninska ChArUco kalibracijska ploča u
-  mjernom volumenu kidalice i dvije kamere stereovizijskog sustava na stativima.}
+  mjernoj zoni kidalice i dvije kamere stereovizijskog sustava na stativima.}
   \label{fig:kalibpostav}
 \end{figure}
 
 Ispravnost kalibracije provjerena je projiciranjem čvorova 3D mreže mjerne
-površine $\mathsf{M}$ (definirane u odjeljku \ref{ssec:postupak}) u obje kamere
-prema \eqref{eq:projection}; kao što pokazuje Slika \ref{fig:overlay}, projicirana
-mreža precizno prekriva teksturiranu mjernu zonu u obje slike, čime je potvrđena
+površine $\mathsf{M}$ u obje kamere
+prema \eqref{eq:projection}. Kao što pokazuje Slika \ref{fig:overlay}, projicirana
+mreža precizno prekriva teksturiranu mjernu zonu u objema slikama, čime je potvrđena
 geometrijska konzistentnost sustava.
 
 \begin{figure}[H]
@@ -140,9 +148,9 @@ Referentni oblik mjerne površine opisan mrežom $\mathsf{M}$ prikazan je na Sli
 \ref{fig:meshref}. Mjerna zona obuhvaća središnji dio luka epruvete, područje
 veličine približno $4{,}02 \times 9{,}67$\,mm, i izrazito je zakrivljena u smjeru
 osi $y$ (raspon koordinate $z$ iznosi $2{,}06$\,mm, tj.\ oko 20\,\% raspona
-koordinate $y$), što odmah objašnjava zašto
-je za ovaj uzorak nužno stereo mjerenje: svaka promjena tog zakrivljenog oblika ima
-značajnu komponentu prema kamerama, koju jedna kamera ne može razdvojiti od
+koordinate $y$), što objašnjava zašto
+je za ovaj uzorak nužno stereo mjerenje. Svaka promjena tog zakrivljenog oblika ima
+značajnu komponentu prema kamerama, koju pojedinačna kamera ne može razdvojiti od
 ravninskog gibanja. Mreža je pravilna, s trokutima približno jednakih stranica
 (medijalni omjer najdulje i najkraće stranice iznosi svega $1{,}03$), što pogoduje
 stabilnosti korelacije i kasnijeg računanja deformacija.
@@ -205,40 +213,39 @@ rezultat.
 \subsubsection{Mjerna mreža i njezin odnos prema kalibraciji}
 \label{sssec:mreza}
 
-Mjerna mreža za korelaciju definirana je \emph{potpuno neovisno o kalibracijskom
-koraku}: kalibracija pridonosi isključivo projekcijskim matricama $\mathsf{P}_1$ i
+Mjerna mreža za korelaciju definirana je potpuno neovisno o kalibracijskom
+koraku. Kalibracija pridonosi isključivo projekcijskim matricama $\mathsf{P}_1$ i
 $\mathsf{P}_2$, dok se područje interesa i njegova diskretizacija zadaju na
-referentnoj slici uzorka. Na referentnoj je slici interaktivno označen poligon
+referentnoj slici uzorka. Na njoj je interaktivno označen poligon
 mjerne zone te je unutar njega generirana nestrukturirana mreža linearnih
 trokutastih elemenata (T3), sa zadanom najvećom duljinom brida elementa od
-10 piksela; stvarna medijalna duljina brida iznosi $9{,}19$\,px. Takva podjela
-slike na elemente ispunjava ulogu subsetova iz zadatka: umjesto neovisnih
-kvadratnih podregija lokalnog pristupa, područje interesa kontinuirano je
-pokriveno trokutastim elementima (globalni pristup), što izravno daje neprekinuto
-polje pomaka i olakšava kasnije deriviranje deformacija. Odluka da se ista
-diskretizacija koristi u objema kamerama i u 3D rekonstrukciji donesena je
-namjerno: iz neovisno definirane 2D mjerne mreže i kalibriranih matrica izvedena
+10 piksela, dok stvarna medijalna duljina brida iznosi $9{,}19$\,px.
+Sukladno ustupljenim programskim kodovima za provođenje 2D korelacije,
+uloga \textit{subsetova} iz zadatka zamijenjena je naprednijim globalnim pristupom
+umjesto neovisnih kvadratnih podregija. Područje interesa kontinuirano je
+pokriveno trokutastim elementima, što izravno daje neprekinuto
+polje pomaka i olakšava kasnije deriviranje deformacija. Ista se
+diskretizacija koristi u objema kamerama i u 3D rekonstrukciji. Iz neovisno definirane 2D mjerne mreže i kalibriranih matrica izvedena
 je trodimenzijska mreža $\mathsf{M}$ (252 čvora, 438 elemenata) koja opisuje
 referentni oblik mjerne površine, a čije se projekcije u obje kamere poklapaju s
-mjernom mrežom. Time je korespondencija čvorova među kamerama zajamčena po
+mjernom mrežom. Time je korespondencija čvorova među kamerama zagarantirana po
 konstrukciji (čvor $i$ u kameri 1 odgovara čvoru $i$ u kameri 2) i izbjegnuta je
 svaka interpolacija između različitih diskretizacija.
 
 \subsubsection{Parametri korelacijskog algoritma}
 \label{sssec:parametri}
 
-Kao korelacijski kriterij korišten je zbroj kvadrata razlika sivih razina (SSD,
-engl.\ \textit{Sum of Squared Differences}) prema \eqref{eq:dic-functional}:
-rezidual se računa izravno kao $\rho = f - \hat{g}$, bez oduzimanja srednje
-vrijednosti i bez normiranja standardnom devijacijom (dakle, ne radi se o ZNSSD
-ili NSSD inačicama kriterija). Takav je izbor primjeren ovdje ostvarenim,
-stabilnim rasvjetnim uvjetima: kamere i rasvjeta fiksirani su tijekom cijelog
-pokusa, pa nema globalnih promjena osvjetljenja koje bi zahtijevale robusnije
+Kao korelacijski kriterij korišten je zbroj kvadrata razlika intenziteta piksela (SSD,
+engl.\ \textit{Sum of Squared Differences}) prema \eqref{eq:dic-functional}.
+Rezidual se računa izravno kao $\rho = f - \hat{g}$, bez oduzimanja srednje
+vrijednosti i bez normiranja standardnom devijacijom. Takav je izbor primjeren ovdje ostvarenim,
+stabilnim rasvjetnim uvjetima. Kamere i rasvjeta fiksirani su tijekom cijelog
+eksperimenta, pa nema globalnih promjena osvjetljenja koje bi zahtijevale robusnije
 (normirane) kriterije. Funkcije oblika elemenata su linearne (T3 elementi s tri
-čvora, geometrijski red mreže ,,linear``), a vrijednosti sivih razina deformirane
-slike na subpikselnim položajima dobivaju se dvolinearnom (bilinearnom)
-interpolacijom slike. Minimizacija reziduala provodi se Gauss--Newtonovim
-postupkom; iteracije se zaustavljaju kada promjena RMS reziduala padne ispod
+čvora, geometrijski red mreže \textit{linear}), a vrijednosti sivih razina deformirane
+slike na subpikselnim položajima dobivaju se dvolinearnom
+interpolacijom slike. Minimizacija reziduala provodi se Gauss-Newtonovim
+postupkom, a iteracije se zaustavljaju kada promjena RMS reziduala padne ispod
 $10^{-4}$ sivih razina.
 
 Mjerilo slike iznosi $0{,}0502$\,mm/px (fizička veličina piksela na površini
@@ -246,7 +253,7 @@ uzorka, određena pri postavljanju 2D korelacije), pa medijalna duljina brida
 elementa od $9{,}19$\,px odgovara približno $0{,}46$\,mm na uzorku. Usporedbom
 duljina bridova mreže u slici s pripadnim duljinama u kalibracijskom koordinatnom
 sustavu dobiva se $218{,}24$\,px po kalibracijskoj jedinici, odnosno mjerilo
-prostora od $10{,}96$\,mm po kalibracijskoj jedinici -- tim su mjerilom svi
+prostora od $10{,}96$\,mm po kalibracijskoj jedinici. Tim su mjerilom svi
 rezultati u Poglavlju \ref{sec:rezultati} izraženi u milimetrima (uz pikselske
 ekvivalente gdje je to korisno).
 
@@ -254,27 +261,27 @@ ekvivalente gdje je to korisno).
 
 Primijenjeni postupak stereo korelacije provodi se u sljedećim koracima:
 \begin{enumerate}
-  \item \textbf{2D korelacija po kameri.} Za svaku kameru zasebno provodi se globalna
+  \item \textbf{2D korelacija po kameri} -- Za svaku kameru zasebno provodi se globalna
   korelacija konačnih elemenata između referentne i svake deformirane slike, čime se
   dobiva polje ravninskih (2D) pomaka čvorova mreže $\mathbf{U}_1$ i $\mathbf{U}_2$.
-  \item \textbf{Korespondencija čvorova.} Budući da su obje slikovne mreže projekcije
+  \item \textbf{Korespondencija čvorova} -- Budući da su obje slikovne mreže projekcije
   iste 3D mreže $\mathsf{M}$, korespondencija čvorova između kamera je zajamčena po
   konstrukciji -- čvor $i$ u kameri 1 odgovara čvoru $i$ u kameri 2.
-  \item \textbf{Čišćenje rubnih čvorova.} Prije rekonstrukcije, izmjerena 2D polja
+  \item \textbf{Čišćenje rubnih čvorova} -- Prije rekonstrukcije, izmjerena 2D polja
   automatski se provjeravaju na lokalno nekonzistentne čvorove (usporedbom s
-  medijanom pomaka susjednih čvorova); pojedinačni čvorovi degradirane korelacije
+  medijanom pomaka susjednih čvorova). Pojedinačni čvorovi degradirane korelacije
   uz rub mjerne zone zamjenjuju se tim medijanom (detalji u Poglavlju
   \ref{sec:implementacija}).
-  \item \textbf{Stereo triangulacija.} Za svaki frame i svaki čvor rekonstruira se 3D
+  \item \textbf{Stereo triangulacija} -- Za svaki frame i svaki čvor rekonstruira se 3D
   položaj triangulacijom \eqref{eq:dlt} iz njegovih deformiranih položaja u objema
   kamerama. Referentni 3D oblik dobiva se triangulacijom nedeformiranih položaja.
-  \item \textbf{Polje 3D pomaka.} Trodimenzijski pomak čvora jednak je razlici
+  \item \textbf{Polje 3D pomaka} -- Trodimenzijski pomak čvora jednak je razlici
   trianguliranog deformiranog i referentnog položaja,
   $\mathbf{U}^{\text{3D}} = \mathbf{X}^{\text{def}} - \mathbf{X}^{\text{ref}}$.
-  \item \textbf{Deformacije.} Iz polja 3D pomaka računaju se površinske deformacije
+  \item \textbf{Deformacije} -- Iz polja 3D pomaka računaju se površinske deformacije
   \eqref{eq:green-lagrange} po elementu.
 \end{enumerate}
 
-Ovakav pristup -- 2D korelacija po kameri praćena triangulacijom -- omogućuje
+Ovakav pristup omogućuje
 izravno ponovno korištenje postojećeg, provjerenog algoritma 2D korelacije, uz
 minimalnu dodatnu programsku logiku za stereo rekonstrukciju.

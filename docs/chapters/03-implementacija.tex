@@ -8,8 +8,9 @@ ugrađene MATLAB funkcije, čime je količina novoga koda svedena na najmanju mj
 \subsection{Ponovno korištene komponente}
 
 Korak 2D korelacije po kameri (Poglavlje \ref{sec:metoda}) proveden je postojećim
-algoritmom globalne korelacije konačnih elemenata. Rezultat -- polja čvornih 2D
-pomaka za obje kamere kroz svih 300 obrađenih deformacijskih stanja -- korišten je
+algoritmom globalne korelacije konačnih elemenata. Kao rezultat dobivena su
+polja čvornih 2D pomaka za obje kamere kroz svih 300 obrađenih deformacijskih
+stanja, što je korišteno
 kao ulaz u stereo rekonstrukciju.
 
 \subsection{Nove komponente}
@@ -29,15 +30,15 @@ singularne vrijednosti (\texttt{svd}), a vizualizacija ugrađenim funkcijama
     \midrule
     \texttt{stereoTriangulate.m} & Linearna (DLT) triangulacija točaka iz dviju
       kamera prema \eqref{eq:dlt}. \\
-    \texttt{surfaceStrains.m} & Green--Lagrangeove površinske deformacije po elementu
+    \texttt{surfaceStrains.m} & Green-Lagrangeove površinske deformacije po elementu
       prema \eqref{eq:green-lagrange}. \\
     \texttt{cleanEdgeNodes.m} & Automatska detekcija i popravak pojedinačnih čvorova
-      s degradiranom korelacijom (odjeljak \ref{ssec:ciscenje}). \\
+      s degradiranom korelacijom. \\
     \texttt{StereoDIC3D.m} & Glavna skripta: učitavanje podataka, čišćenje,
       triangulacija po frameovima, deformacije, spremanje i vizualizacija. \\
-    \texttt{RunUncertaintyBatch.m} & Neinteraktivno određivanje mjerne
-      nesigurnosti iz 20 slika neopterećenog uzorka, uz studiju utjecaja
-      veličine elementa (odjeljak \ref{ssec:nesigurnost}). \\
+    \texttt{RunUncertaintyBatch.m} & Određivanje mjerne
+      nesigurnosti iz 20 slika neopterećenog uzorka, uz određivanje utjecaja
+      veličine elementa. \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -46,30 +47,32 @@ singularne vrijednosti (\texttt{svd}), a vizualizacija ugrađenim funkcijama
 \label{ssec:ciscenje}
 
 Analiza sirovih 2D polja pokazala je da korelacija u kameri 2 gubi tri čvora na
-samom rubu mjerne mreže (čvorovi 110, 229 i 252 od ukupno 252; kamera 1 iste čvorove
-prati uredno). Uzrok je manjak slikovne informacije uz rub: čvor 252 leži na samoj
+samom rubu mjerne mreže (čvorovi 110, 229 i 252 od ukupno 252), dok kamera 1 iste čvorove
+prati uredno. Uzrok tome je manjak slikovne informacije uz rub jer čvor 252 leži na samoj
 silueti ruba epruvete uz tamnu pozadinu, a čvorovi 110 i 229 u pojasu slabog
 kontrasta koji je u kosom pogledu kamere 2 dodatno perspektivno skraćen. Slika
-\ref{fig:detekcija} prikazuje vremenski tijek: odstupanje pomaka čvora od medijana
-susjednih čvorova za čvor 252 naglo skače na $\approx 11$ piksela oko 133.\ framea
+\ref{fig:detekcija} prikazuje vremenski tijek odstupanja pomaka spomenutih
+čvorova od medijana
+susjednih čvorova. Za čvor 252 vrijednost naglo skače na $\approx 11$ piksela
+oko 133.\ kadra
 (konvergencija u pogrešan lokalni minimum), dok čvorovi 110 i 229 odlaze postupno
-nakon $\approx 235$.\ framea.
+nakon $\approx 235$.\ kadra.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.85\textwidth]{node_detection.png}
   \caption{Detekcija čvorova s degradiranom korelacijom (kamera 2, sirovi podaci):
-  odstupanje pomaka čvora od medijana pomaka susjednih čvorova kroz frameove, s
-  pragom detekcije od $3$ piksela.}
+  odstupanje pomaka čvora od medijana pomaka susjednih čvorova kroz kadrove, s
+  pragom detekcije od 3 piksela.}
   \label{fig:detekcija}
 \end{figure}
 
 Budući da je pogreška strogo lokalna (3 od 252 čvora, samo u jednoj kameri), a polje
 pomaka fizikalno glatko, primijenjen je jednostavan robusni popravak
-(\texttt{cleanEdgeNodes.m}): za svaki frame i svaku kameru čvor čiji pomak odstupa od
+(\texttt{cleanEdgeNodes.m}). Za svaki kadare i svaku kameru čvor čiji pomak odstupa od
 medijana pomaka susjednih čvorova više od praga (3 piksela) zamjenjuje se tim
 medijanom. Detekcija je automatska i u analiziranim podacima pronalazi upravo
-navedena tri čvora u kameri 2 i nijedan u kameri 1; preostalih 249 čvorova i svi
+navedena tri čvora u kameri 2 i nijedan u kameri 1. Preostalih 249 čvorova i svi
 koraci algoritma (korelacija, triangulacija, deformacije) ostaju netaknuti.
 
 \subsection{Provjera ispravnosti}
@@ -84,8 +87,8 @@ komponenti pomaka i visoku kvalitetu korelacije.
 
 Slika \ref{fig:reproj} prikazuje prostornu razdiobu reprojekcijske pogreške prije i
 poslije čišćenja. Prije čišćenja tri detektirana rubna čvora dosežu $3{,}90$ do
-$6{,}25$ piksela; nakon zamjene medijanom susjeda njihova reprojekcijska pogreška
-pada na razinu ostatka polja, a 95.\ percentil cijelog polja iznosi $0{,}33$ piksela.
+$6{,}25$ piksela, a nakon zamjene medijanom susjeda njihova reprojekcijska pogreška
+pada na razinu ostatka polja s 95.\ percentilom cijelog polja od $0{,}33$ piksela.
 
 \begin{figure}[H]
   \centering

@@ -38,6 +38,7 @@
 
 % --- Section Formatting (14pt Bold Uppercase) ---
 \usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
 \titleformat{\section}
   {\normalfont\fontsize{14}{17}\bfseries\MakeUppercase}
   {\thesection.}{0.5em}{}
@@ -73,7 +74,7 @@
   \renewcommand{\figurename}{Slika}%
   \renewcommand{\tablename}{Tablica}%
   \renewcommand{\contentsname}{\normalfont\fontsize{14}{17}\bfseries SADRŽAJ}%
-  \renewcommand{\refname}{\normalfont\fontsize{14}{17}\bfseries LITERATURA}%
+  \renewcommand{\refname}{\normalfont\fontsize{14}{17}\bfseries Literatura}%
 }
 
 % --- References, links, math ---
@@ -85,6 +86,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,calc}
 
+\usepackage{indentfirst}
 \setlength{\parindent}{1.25cm}
 \setlength{\parskip}{0pt}
 
@@ -113,11 +115,11 @@
   \vspace{0.8cm}
   {\fontsize{14}{18}\bfseries \seminartitle \par}
   \vfill
-  \begin{tabular}{p{0.45\textwidth}>{\raggedleft\arraybackslash}p{0.45\textwidth}}
-    \textmd{Profesor:} & \textmd{Studenti:} \\[0.3cm]
-    \textbf{\professorname} & \textbf{Marko Bakotić} \\
-    & \textbf{Tin Dolenčić} \\
-    & \textbf{Lucijan Fišter} \\
+  \begin{tabular}{p{0.55\textwidth}>{\raggedleft\arraybackslash}p{0.35\textwidth}}
+    \textmd{Nastavnici:} & \textmd{Studenti:} \\[0.3cm]
+    \textbf{Izv. prof. dr. sc. Zvonimir Tomičević, mag. ing.} & \textbf{Marko Bakotić} \\
+    \textbf{Dr. sc. Andrija Zaplatić, mag. ing.} & \textbf{Tin Dolenčić} \\
+    \textbf{Borna Božović, mag. ing. mech.} & \textbf{Lucijan Fišter} \\
     & \textbf{Krešimir Hartl} \\
     & \textbf{Ivan Noršić} \\
     & \textbf{Matija Pongračić}
@@ -131,6 +133,10 @@
 \pagenumbering{Roman}
 \setcounter{page}{1}
 \tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
 \clearpage
 
 % ---- BODY ----
@@ -146,6 +152,7 @@
 
 % ---- LITERATURA ----
 \clearpage
+\addcontentsline{toc}{section}{Literatura}
 \bibliographystyle{unsrt}
 \bibliography{references}
 
